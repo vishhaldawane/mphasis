@@ -1,0 +1,351 @@
+
+
+
+		
+
+	20 years
+	10000
+	54 MNCs
+	C/C++ Java Oracle unix
+	Quantum Mechanics Quantum Physics- social perspective
+
+
+			Java Training
+
+		
+		lEarn
+		+  +
+		S G L
+		|   |
+	  Knowledge |
+		|   |
+	   Applied<--experience
+		|   |
+	   Wisdom  Wealth
+					NEURO LINGUISTIC PROGRAM
+					|
+				 BRAIN CELLS
+
+				TOUCH + SKIN
+
+	EYE	EAR	NOSE	TONGUE	SKIN
+	|	|	|	|	|
+	SEE	LISTEN	SMELL   SPEAK 	TOUCH
+	YES	YES		yes	TYPE
+					FINGERS
+
+
+	
+		BIRYANI		VS	SOFTWARE PROGRAM
+
+		TANGIBLE		INGANTIBLE
+		SKIN			MIND
+
+
+		BODY			MIND		INTELLIGENCE	
+		FAST			FASTER		FASTEST			
+			
+			
+
+
+				Who
+				|????
+				|Employee + ==>Student<==
+		-------------------------------------
+		|			|
+		where			when
+		|space			|time 9.33 24 March 2021
+	--------------------------------------------------------
+	|			|			|
+	why			what			how
+	REASON			inFORMation		implementation
+	|						|
+	projects					success  or  feedback
+	|
+	software 
+
+	intangible	tangible
+	|		|
+	
+
+	
+
+
+
+
+
+
+	First.java
+	--------------
+	public class First
+	{
+		public static void main(String args[])
+		{
+			System.out.println("Hello EveryOne!!!");
+
+		}
+	}
+	
+	> javac First.java -> it will generate First.class file 
+
+	> java  First <-- this class file is run here
+
+
+
+
+
+  50
+
+
+		chef			vs		consumer
+		|					|
+		make it					eat it
+			
+	cluster = [ ServerMachine + backupMachine1 + backupMach2 + backup3 ]
+	cluster		| Your Project would be here
+	managernode	| Airline System/rail ticketing/bus booking
+			| Employee management/hotel booking
+			| Online shopping
+ 			| Online Banking/Online Payment
+			| Online Taxi/online tourism/online streaming
+			| online exam/online games/online food/online interview
+			| online training(webx/teams/gmeet)
+			| online courses/online code editors/convertors
+			| online money transfer/online image+video editing
+			| online monitoring/social media/stock management +ware house
+			| browser tools / android apps / onlline file sharing
+			| online ticket booking / online movie ticket booking
+			| online latest news / online matrimony / online sports portal
+			| online insurance / location tracker
+			| online betting / online gadgets review
+			| online verification / doctor consultancy
+			| online jobs / data  conversion / compression
+			| online forums + blogs / telecom services
+			| online trading / online s/w download platforms
+			| online repositories / online sales
+			| online groceries / online tution / online dating 
+			| online storage (cloud) / online funding
+			| 
+	--------------------------------------
+	|	|	|	|	|
+	client1 client2 client3...... 
+	|
+	person1
+
+	proactive
+	begin with the END in mind
+	put first thing first
+
+			PRODUCT + SERVICES
+			
+THESE ARE THE FEATURES OF "ENTERPRISE APPLICATIONS"
+
+what are the important features u can observe 
+
+	1. remote capability of an application (networking)
+
+			socket programming
+
+	2. High Availability of the application - HA series
+			clustering
+	
+	3. MULTITHREADING | MULTIPROCESSING 
+
+		DOWNLOAD + LISTEN TO MUSIC + PRINT DOCS + WRITE PROGRAMS
+	
+	4. "POOL"ING RESOURCES
+			GUEST 
+
+			ARE IN POOL			CACHE - 32
+				|			|
+		[18 EMPTY SHOPPING CARTS]	CUST1  CUST2  CUST3 ,, CUST20
+						|	|	|	|
+						CART1	CART2	CART3	CART20
+
+		10					10.30 - 20 + 20 + 10 + 15
+
+	5. (CACHE)ING OF RESOURCES
+		REGISTERED 
+
+	6. TRANSACTION - A C I D
+	7. SECURITY
+				HTTPS 
+
+                            15  
+		
+
+	technology
+		|
+	------------------
+	|		|
+	Java		domain
+			team1 bus(4), team2 insurance, team3 shopping ....
+
+	system level features + domain level features
+	( 7 features )	      + 	
+
+	Enterprise Application Server ( will offer above 7 features to your applicaiton )
+			| BusBooking System <- domain
+			|	searchBuses() + bookTicket() + pay() + cancelTicket()
+			|
+			| OnlineShopping system <-- domain
+			|       searchProducts() + addItemToCart() + buyIt() + payment()
+
+			| online insurance system
+			|      viewPolicies() + buyAPolicy() + pay()
+			|	claimPolicy()
+			|
+	-----------------------------------------
+	|
+	|
+	customer1
+
+
+
+					b2b
+					Online Banking application
+					|Online Insurance 
+		----------------------------------------------------
+		|	|	|	|	|	|
+		PC	ATM	VISA	IVR	SMS	SmartPhone
+		|     options  machines 		mobileApp
+		chrome					chrome(mobile version)
+		| browser		
+		| (html)
+		website
+	icicibank.com
+	centralbankofindia.com
+	sbi.com
+	standardchartered.com
+	and so on....
+
+
+
+		html + css + java script + jquery
+		|	|	 |		|
+		view	style validation   set of predefined
+		of the		 code	   library functions
+		web page(s)		   (to use the readymade code)
+		|
+your balance is low : 1234 <--green
+		  |
+		 red
+
+
+
+		Online Banking
+		|
+	----------------------------------------------------------------------------------------------------------------------------------------------------------------
+	|	|	   |	      |          	|		|		|		|			|		   |		|
+  home.html balance.html login.html register.html  transferfunds.html  profile.html addPayee.html	viewallPayee.html	deletePayee.html  query.html	customersupport.html
+
+	
+
+ 
+
+
+		
+
+
+
+
+
+
+------------------------------------------------------
+
+		html = "hyper" text markup language
+
+
+
+
+
+
+
+
+
+					   hbernate ---> DB
+						|
+		ServerMachine + server code (spring)
+		|		String a = request.getParameter("uname");
+		|		String b = request.getParameter("upass");
+		|
+	---------------------
+	|chennai		mumbai		delhi	.....
+	register.html	register.html	register.html	register.html
+	|
+control1 -- enter login name
+control2 -- enter email
+control3 -- enter phone
+and so on...
+
+	Submit button | register me | <---click 
+	
+
+
+
+
+	in the login.html
+
+		enter username
+		enter password
+		+
+		|
+	--------------------------
+	|			|
+	forgot password?	reset password
+		|		|
+	 forgotpass.html	resetpass.html
+		|		|
+	enter email id		enter old password
+	submit button		enter new password
+				re-enter new password
+
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+
+			 
+
+
+
+	click here to see the details
+		
+
+
+
+
+
+
+								
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
