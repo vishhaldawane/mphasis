@@ -1,15 +1,83 @@
 <html>			
-	<head>		<title> ICICI Bank </title>	</head>
+	<head>		
+		<title> My Bank </title>
+
+		<style>
+			.myheadingA {
+				background-color: red;
+				color: green;
+				font-family: cursive;
+			}
+			.myheadingB {
+				background-color: cyan;
+				color: blue;
+				font-family: cursive;
+			}
+
+			h1 {
+				color: red;
+				background-color: magenta;
+			}
+			h2 {
+				color: pink;
+				background-color: green;
+			}
+
+			p {
+				color: magenta;
+			}
+
+			#para4 {
+				text-align: center;
+				color:green;
+			}
+			#para5 {
+				text-align: right;
+				color:lightgreen;
+			}
+
+			.myalign {
+				text-align:center;
+			}
+			* {
+				color: red;
+			}
+
+			h4,h5 {
+				text-align: center;
+				color:lightred;
+			}
+		</style>
+
+		
+
+	</head>	
+			
 	<body>
-		<h1> Welcome to ICICI Bank </h1>		<hr>
-		<h2> Registration </h2> <hr>
+	<script>
+	function validate() 
+	{
+		//alert("validation started....") ;
+		var v1 = document.getElementById("uname").value;
+		//alert("Entered name is "+v1);
+		var v2 = document.getElementById("upass").value;
+		//alert("Entered password is "+v2);
 
+		document.write('<table border=3>');
+		document.write('<tr><td> username is </td><td>'+v1+'</td></tr>');
+		document.write('<tr><td> password is </td><td>'+v2+'</td></tr>');
+		document.write('</table>');
+	}
+	</script>
 
+	<button onclick="validate()"> CLICK ME1 </button>
+<h4>  ICICI bank1 heading4 </h4>
 	<form name="sign-in-form">
 		<table border=1>
-
-		<tr> <td> Enter login name </td>  	<td> <input type=text name=uname> 	</td> </tr> 
-		<tr> <td> Enter login password </td>  	<td> <input type=password name=upass>   </td> </tr>
+<tr> <td> Enter login name </td>  
+<td> <input type=text id="uname" name=uname> 	</td> </tr> 
+<tr> <td> Enter login password </td> 
+<td> <input type=password id="upass" name=upass>   </td> </tr>
 		<tr> <td> Enter gender </td>  		<td> <input type=radio name=ugender> Male
 			     				 <input type=radio name=ugender> Female </td> </tr>
 
@@ -37,7 +105,7 @@
 			      </select>  </td> </tr>
 
 
-		<tr> <td> Enter State </td>  <td> <select name=ucity> 
+		<tr> <td> Enter City </td>  <td> <select name=ucity> 
 					<option value="i">Mumbai</option>
 					<option value="i">Chennai</option>
 					<option value="i">Hyderabad</option>
@@ -46,11 +114,29 @@
 
 		</table>
 
+		News papaers I read 
 
+		<ol type="I" start="6">
+			<li> Times of India </li>
+			<li> DNA </li>
+			<li> The Economics Times </li>
+		</ol>
+
+		Breakfast I take
+
+		<ul type="none">
+			<li> Honey + Water </li>
+			<li> Tea </li>
+			<li> Idli Sambar </li>
+		</ul>
+
+		
 		<input type=submit name=submit value="Register Me">
 
 	</form>
 
 		click <a href=home.html> here </a> to goto home
 	</body>
+
+		
 </html>

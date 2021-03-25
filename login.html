@@ -1,11 +1,35 @@
 <html>			
-	<head>		<title> ICICI Bank </title>	</head>
+	<head>		<title> ICICI Bank </title>	
+
+
+		<style>
+			.loginform {
+				padding:10px;		border:1px solid pink;
+				float:center;		margin-top:10px;		
+				border-radius:10px;
+			}
+
+			.loginheader {
+				text-align:center;	padding:4px;
+				color:white;		background-color:red;
+			}
+
+			.sub {
+				padding: 8px 15px 8px 15px;		color:white;
+				background-color:blue;			border-radius:10px;					
+			}
+		</style> </head>
 	<body>
-		<h1> Welcome to ICICI Bank </h1>	<hr>
-		<h2> Login </h2> <hr>
-		Enter username <input type=text name=uname> <br>
-		Enter password <input type=password name=upass> <br>
-		<input type=submit name=submit value="Login Me">
-		click <a href=home.html> here </a> to goto home
+	<h1> Welcome to ICICI Bank </h1>	<hr>
+	<div class="loginform">
+	<h3 class="loginheader"> Login Here </h2> <hr>
+	<form>	   <table align=center>
+		<tr><td>Enter username </td><td><input type=text name=uname> </td> </tr>
+		<tr><td>Enter password </td><td><input type=password name=upass> </td> </tr>
+		<tr><td colspan="2" align=center> <input type=submit class="sub" 
+				name=submit value="Login Me"> </td> </tr>
+	   </table></form></div>click <a href=home.html> here </a> to goto home
+
+		
 	</body>
 </html>

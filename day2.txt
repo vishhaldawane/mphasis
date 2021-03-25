@@ -1,0 +1,285 @@
+
+
+
+	interactiveness 			GUI
+		|				|
+	----------------------		-----------------
+	|		|		|		|
+	you 		machine				machine
+							|
+							you
+
+
+
+	talking  being typed
+	|		|
+	ear		eye
+
+
+
+
+
+
+
+thoughts + emotions
+ |		|
+ attendance	feel
+
+
+	brain = 
+
+
+		rajesh sharma - raja/raj/raju
+
+	
+	OTP service/Gmail Service
+	|
+	|	DatabaseServer (table)
+	|	|
+	ServerMachine (192.168.0.1)
+		|2.here a program named as "resource1","resource2","resource3","resource4"
+		|  HA
+		|    1.RemoteCapability (socket programming)
+		|
+	------------------------------------------------------------
+	|		|	|		||||||||||||||||||||3
+ClientMachine1	ClientMachine2	ClientMachine3	ClientMachine.....
+-------------------------------------------------------------------
+ register.html  | login.html (4/5)
+<form name="register_personal_info" action="http://192.168.0.1:8080/resource1">
+	Enter your email    <input type=text name=uname>
+	Enter your password <input type=password name=upass>
+	<input type=submit name=submit value="RegisterMe">
+</form>
+<form name="register_educational_info" action="http://192.168.0.1:8080/resource2">
+	Enter your basic qualification <select....
+	Enter your certification <select ....
+	<input type=submit name=submit value="Upload Educational Info">
+</form>
+-------------------------------------------------------------------
+	domain would be different | but the nature of work is same
+
+addPayee.html (6)		insurance | banking | shopping....
+
+	<form name="add_payee" action="http://192.168.0.1:8080/resource3">
+	 Enter    payee name <input ...
+	 Enter    payee account number <input .... in a password way
+	 Re-Enter payee account number <input .... in a text way ...
+	 Enter payee IFSC code <input .....
+
+	 <input type=submit name=submit  value="Add Payee">
+	</form>
+
+---------------------------------------
+ViewAllPayees.html (6)
+	
+	<form name="view_all_payeee" action="http://192.168.0.1:8080/resource4">
+		<input type=submit name=submit  value="View All Payees">
+	<form>
+---------------------------------
+
+(7) - can be the transaction password/ OTP / email service
+
+
+
+
+
+
+	Tag specific
+	html file specific
+	separate file too
+
+	html class attribute
+
+
+
+	used by CSS or Java script
+
+
+
+		<h1 class="myheading">  ICICI bank1 </h1>
+		<h2 class="myheading">  ICICI bank2 </h2>
+		<h3 class="myheading">  ICICI bank3 </h3>
+
+
+
+
+
+
+
+<p style="color:red"> this is a paragraph2 </p>
+    |
+ tag specific style (it overrides all settings)
+ implicit style for a particular tag
+ "inline style" <-- Varshitha
+
+applicable to all paragraphs
+	|
+	p {
+		color: magenta;
+	}
+
+	. means a class 
+		|
+		.myheadingA
+		|
+	-----------------------------
+	|	|	|	|
+	h1	p	input	form
+	h2
+	..
+
+ mystyle3.css <-- external style sheet
+	| h3 { lightgreen }
+---------------------------------------------------
+|			|		|
+a.html			b.html		c.html
+<style>			<style>		<style>
+  h1 { red }		h1 { green }	h1 { blue }
+  h3 { lightblue }			h3 { gray }
+</style>		</style>	</style>
+
+<h2 style pink>	 	<h2 style cyan>  <h2 style magenta>
+
+<h3 style lightpink>	<h3>		<h3>
+
+	TEAR FORMULA OF CREATION 
+
+	think + eMOTION (Feel) = Act + Result
+	
+
+
+	p.headingA { color: red  }
+
+	
+	<h1 class="headingA">
+	<h2 class="headingA">
+	<p  class="headingA">
+
+
+
+
+					internet
+						|
+					---------------------
+					|		|
+					picaso		facebook
+					|		|
+      3.http://picaso.com/akrutikhurana/akpic.jpeg      |
+							|
+			4. http://facebook/akrutik/myalbum/akpic.jpeg
+	     c:\
+	----------------------
+	|		|
+	MyPc		javatraining
+	|		|
+	|		-------------------
+	|		|		|
+	Users		akpic.jpeg(1)	images
+	|		home.html	 |
+	|		    |		5. akpic.jpeg 
+	Akruti		 1.<img src="akpic.jpeg">   
+	|		 2.<img src="c:\mypc\users\akruti\akpic.jpeg">
+	akpic.jpeg(2)	 3.<img src="http://picaso.com/akrutikhurana/akpic.jpeg">
+			 4.<img src="http://facebook/akrutik/myalbum/akpic.jpeg">
+			 5.<img src="images/akpic.jpeg">
+	
+
+
+
+
+
+
+
+
+
+
+
+
+			d:\
+			|
+	-------------------------------------
+	|		|
+	mypc		javatraining
+	|		|
+	users		MyProject <== this complete folder is uploaded
+	|		|
+	vishal	---------------------------------------------------------
+	|	|		|	|	 |	|
+	*.jpeg	WEB-INF		myhtml	myimages mycss myjs
+		|		|        |	 |	 |
+	-------------------   home.html  a.jpeg	new.css valid.js
+	|	    |	      login.html b.jpeg  old.css code.js
+    classes      some.xml
+	|
+your java 
+are here
+(server programs)
+
+
+
+
+
+		subject <==> object
+
+		[passion]ate 
+	   | cricket | photography | carrom | gardening | anything
+		-------------
+		|	|
+		wakeup	sleep
+
+			will power 
+
+		html - view
+
+		css - style
+
+		javascript - validation 
+
+	internal goals   vs external goals
+	|			|
+	inside your mind	from outside people
+
+
+
+"java script" has nothing to do with "java programming language"
+	|
+	to validate the
+	input of html code
+
+
+
+	cd ..  - to exit one level up
+
+	cd dir  - to enter into the directory
+
+	cd \	to exit all the levels
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
