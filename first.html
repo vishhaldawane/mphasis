@@ -1,0 +1,27 @@
+<html>	
+    <head>
+		<style>	input {	color:red;	}</style>
+
+	<script>
+		function fun() {
+		  var myname = document.getElementById("fname");
+		  var msg = document.getElementById("mysp");
+
+		  if(myname.value.length > 8 )
+			msg.innerHTML ="length cannot be more than 8 letters";
+		  else
+		        msg.innerHTML =myname.value.length+" how are you "+myname.value;
+
+			
+                }
+	</script>
+
+    </head>
+
+  Enter name <input  onkeyup="fun()" type=text id="fname"> 
+  <span id="mysp">   </span>
+
+	
+
+
+</html>

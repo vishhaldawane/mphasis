@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html>
+
+<body>
+
+  <p>Before the script...</p>
+
+  <script>
+	let message = "hello";  alert(message);				
+
+	message = 10000;	alert(message);
+
+	message = 3.14;		alert(message);
+
+	message = 'Y';		alert(message);
+
+
+	alert( 1 / 0 ); // Infinity
+	alert( Infinity ); // Infinity
+	alert( "not a number" / 2 ); // NaN, such division is erroneous
+	alert( "not a number" / 2 + 5 ); // NaN
+
+	const bigInt = 1234567890123456789012345678901234567890n;
+
+	alert(bigInt);
+
+  </script>
+
+  <p>...After the script.</p>
+
+</body>
+
+</html>

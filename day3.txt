@@ -1,0 +1,280 @@
+
+
+	all the content of register.html
+	once submitted a javascript code will
+	hold all values into set of variables
+	
+....... then what should happen?
+
+	we should connect to the server and hand over
+	"this data" to the "server" to store it in a "database" table
+		
+		Employee e = new Employee();
+		e.setEmpEmail(email);...like all 13 fields are filled
+	
+		http.post("http://192.168.0.1:8080/resource1",e);
+				<----socket------>
+
+
+
+
+
+
+
+		first of all IT industry
+			     |
+-----------------------------------------------------------------------------------
+|	|	|	|	|	|	|	|	|	|
+CS	IT	Extc	Civil	Mecha	Petro  Chemical BCA	BSCId	IIT
+
+
+	29 + 11 1	4
+	|    |	|50	500		L + EARN
+	+----+----------------
+	  |
+	core java 
+
+
+
+
+
+
+
+
+
+
+
+
+			computing  system
+			|		|
+		 to compute		to automate
+		 + - * / 		
+			|
+	------------------------------------
+	|		|		|
+	hardware <==	software <===	peopleware
+	|		|		|"YOU SHOULD BE WITH YOURSELF"
+	|		|		|
+	tangible	intangible	YOU/WE 
+	touchIt		knowIt		BODY + MIND + HEART + INTELLIGENCE + SOUL
+			|
+		set of instructions
+		series of lines to run
+
+	
+
+	neuron <-- super computer
+
+
+
+
+
+
+		SMART PHONE	VS	WISE PHONE
+		|			|
+		ITS USING YOU		U R USING IT
+
+
+			PROGRAMS
+			| SERIES OF INSTRUCTIONS
+			|
+---------------------------------------------------------
+|	|	|	|	|	|	|	
+c	C++	JAVA	DOTNET  PYTHON  ORACLE SCRIPTING
+	
+
+		
+
+	DISTRIBUTED PROGRAMS
+			|
+		------------------
+		|		|
+		PART1		PART2
+
+				REMOTE MACHINE
+				|
+			Server  [ chennai ] - 		RESPONSE
+
+			| machine / computer
+			|  ipaddress     + port
+			|   
+		-----n/w---------------
+		|
+		|
+		|  ipaddress + port
+	BROWSER client [ mumbai ] 		PART2 - REQUEST
+	|	 machine / computer
+-------------------------------------------------------
+|	|	|	|	|	|	|
+IE   CHROME    EDGE    MOZILA	FF	NN	SAFARI ....100S
+
+
+
+
+
+
+
+
+
+
+
+		1. REMOTE CAPABILITY
+		2. HA
+		3. MT
+		4. POOL
+		5. CACHE
+		6. TM
+		7. SM
+
+
+	P					Q
+	X					Y
+	VISHAL					WIFE
+	|PHONE					|PHONE
+	|   MIC + SPEAKER			|MIC + SPEAKER
+	|	TRANS/RECIEVE			| TRANS/RECIEVE
+	+---------------------------------------+
+
+
+
+
+
+
+
+
+	BROWSER <=> HTML PAGES = WEB PAGE
+			|
+			HYPER TEXT MARKUP LANGUAGE
+
+
+
+
+			WEB PAGE ( TO RUN IN ANY BROWSER )
+			|
+	--------------------------------------
+		|			|
+		STATIC			DYNAMIC 
+		|
+		HOME.HTML		+---------LOGIN ACCEPTED
+		REGISTER.HTML		|   DASH BOARD IS SEEN NOW
+		LOGIN.HTML--------------+
+					|
+					+---------LOGIN DENIED
+					ROUTED BACK TO LOGIN.HTML
+		
+
+				BOY 
+
+   CODE--->	HTML		CSS	JAVASCRIPT
+		|		|	   |
+		VIEW		STYLE	VALIDATOR
+		ON A 
+		BROWSER
+		|		|		|
+		A.HTML		A.CSS		A.JS
+		|		|		|
+  <html>	|		<style>		<script>
+  <LABEL>Name</label>		input{	    check if nm.value is empty
+  <INPUT TYPE=TEXT id="nm">	 color:red; check if nm.value if of length 8
+				}	    check if nm.value contains only alpha
+        +-------+
+    Name|Jack	|		</style>	</script>
+	+-------+
+
+			
+
+from chinthaparthi prudviraj kumar reddy to everyone:    12:14 PM
+from Akruti Khurana to everyone:    12:14 PM
+from GUDDITI GNANESWARI to everyone:    12:14 PM
+from Hima Geethika Irri to everyone:    12:14 PM
+from Deme.Aishwarya to everyone:    12:14 PM
+from DWIBHASHYAM PAVAN KUMAR to everyone:    12:14 PM
+from Mounika Mandala to everyone:    12:14 PM
+from Bhargavi Godavarthi to everyone:    12:14 PM
+from Aavula Sowmya to everyone:    12:14 PM
+from pavan kumar chitikela to everyone:    12:14 PM
+
+from Narun kumar to everyone:    12:14 PM
+from venkata sai kumar chellaboina to everyone:    12:14 PM
+from sujit c pednekar to everyone:    12:14 PM
+from ediga swetha to everyone:    12:14 PM
+from Vinay K to everyone:    12:14 PM
+from GUNTURU VENKATA SRAVANI to everyone:    12:14 PM
+from Vishnu Bheemathati to everyone:    12:14 PM
+from Prasanth Reddy to everyone:    12:14 PM
+from Marina Amulya to everyone:    12:14 PM
+from Revilla Prudhvi Sai Srinivas to everyone:    12:14 PM
+
+from pushyami josyula to everyone:    12:14 PM
+from YASWANTH PANTAGANI to everyone:    12:15 PM
+from Darshan N G (privately):    12:15 PM
+from Pratyush Injam to everyone:    12:15 PM
+
+
+
+
+	46 - 24  = 22
+
+
+
+		EEE  or ECE  + 50  IT
+
+		CSE	     + 50  IT	
+
+
+
+
+
+
+	ASCII
+
+	american standard code for information interchange
+
+
+		HOLD
+		|
+		alt + numpad->65
+		|
+   left of spacebar
+
+ABCDE.Z
+
+	abc...z
+
+
+
+
+
+
+
+
+
+		Enter number1 => 10
+		Enter number2 =>  2
+
+		drop down to select the operator symbol	
+			+
+			-  
+			* 	
+			/ <---
+
+		button -> Calculate
+
+		output -> 5
+
+
+
+
+
+		
+
+		
+
+
+
+
+
+
+
+
+

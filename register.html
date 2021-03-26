@@ -57,86 +57,150 @@
 	<script>
 	function validate() 
 	{
-		//alert("validation started....") ;
-		var v1 = document.getElementById("uname").value;
-		//alert("Entered name is "+v1);
-		var v2 = document.getElementById("upass").value;
-		//alert("Entered password is "+v2);
+		alert("validation started....") ;
+
+		var username  = document.getElementById("uname").value;
+		var password  = document.getElementById("upass").value;
+
+		if( document.getElementById("ugender").checked == true )
+			var gender = 'male';
+		else
+			var gender = 'female';
+
+		var certified = 
+		document.getElementById("ucertified").checked 
+		? "Certified" : "Not Certified";
+
+		var employed  = document.getElementById("uemployed").checked;
+		var married   = document.getElementById("umarried").checked;
+
+		var fullname  = document.getElementById("fullname").value;
+		var email     = document.getElementById("uemail").value;
+		var phone     = document.getElementById("uphone").value;
+
+		var address   = document.getElementById("uaddr").value;
+		var country   = document.getElementById("ucountry").value;
+		var state     = document.getElementById("ustate").value;
+		var city      = document.getElementById("ucity").value;
+		
 
 		document.write('<table border=3>');
-		document.write('<tr><td> username is </td><td>'+v1+'</td></tr>');
-		document.write('<tr><td> password is </td><td>'+v2+'</td></tr>');
+		document.write('<tr><td> username is </td><td>'+username+'</td></tr>');
+		document.write('<tr><td> password is </td><td>'+password+'</td></tr>');
+
+		document.write('<tr><td> gender is </td><td>'+  gender  +'</td></tr>');
+		document.write('<tr><td> certified is </td><td>'+certified+'</td></tr>');
+		document.write('<tr><td> employed is </td><td>'+employed+'</td></tr>');
+		document.write('<tr><td> married is </td><td>'+married+'</td></tr>');
+
+		document.write('<tr><td> fullname is </td><td>'+fullname+'</td></tr>');
+		document.write('<tr><td> email is </td><td>'+email+'</td></tr>');
+		document.write('<tr><td> phone is </td><td>'+phone+'</td></tr>');
+
+		document.write('<tr><td> address is </td><td>'+address+'</td></tr>');
+		document.write('<tr><td> country is </td><td>'+country+'</td></tr>');
+		document.write('<tr><td> state is </td><td>'+state+'</td></tr>');
+		document.write('<tr><td> city is </td><td>'+city+'</td></tr>');
+
+
+
+
 		document.write('</table>');
+
+		
+
+
 	}
 	</script>
 
-	<button onclick="validate()"> CLICK ME1 </button>
+<button onclick="validate()"> CLICK ME1 </button>
+
 <h4>  ICICI bank1 heading4 </h4>
-	<form name="sign-in-form">
-		<table border=1>
-<tr> <td> Enter login name </td>  
-<td> <input type=text id="uname" name=uname> 	</td> </tr> 
-<tr> <td> Enter login password </td> 
-<td> <input type=password id="upass" name=upass>   </td> </tr>
-		<tr> <td> Enter gender </td>  		<td> <input type=radio name=ugender> Male
-			     				 <input type=radio name=ugender> Female </td> </tr>
 
-		<tr> <td> Certified </td>  <td> <input type=checkbox name=ucertified> </td>  </tr>
-		<tr> <td> Employed  </td> <td> <input type=checkbox name=uemployed> </td>   </tr> 
-		<tr> <td>  Married   </td>  <td> <input type=checkbox name=umarried>  </tr> 
+<form name="sign-in-form">
 
-		<tr> <td> Enter your full name </td>  <td> <input type=text name=fullname>  </td> </tr>
-		<tr> <td> Enter email </td>  <td> <input type=email name=uemail>  </td> </tr>
-		<tr> <td> Enter phone </td>  <td> <input type=number name=uphone>  </td> </tr>
-		<tr> <td> Enter address </td>  <td> <textarea cols=20 rows=5 name=uaddr></textarea>  </td> </tr>
+<table border=1>
+	<tr> <td> Enter login name </td>  
+	<td> <input type=text id="uname" name=uname> 	</td> </tr> 
 
-		<tr> <td> Enter country </td>  <td> <select name=ucountry> 
-					<option value="ind">India</option>
-					<option value="nep">Nepal</option>
-					<option value="jap">Japan</option>
-			      </select>  </td>  </tr>
+	<tr> <td> Enter login password </td> 
+	<td> <input type=password id="upass" name=upass>   </td> </tr>
+
+	<tr> <td> Enter gender </td>  		
+	<td> <input type=radio id="ugender" name=ugender> Male
+	<input type=radio name=ugender> Female </td> </tr>
+
+	<tr> <td> Certified </td>  
+	<td> <input type=checkbox id="ucertified" name=ucertified> </td>  </tr>
+
+	<tr> <td> Employed  </td> 
+	<td> <input type=checkbox id="uemployed" name=uemployed> </td>   </tr> 
+
+	<tr> <td>  Married   </td>  <td> 
+	<input type=checkbox id="umarried" name=umarried>  </tr> 
+
+	<tr> <td> Enter your full name </td>  
+	<td> <input type=text id="fullname" name=fullname>  </td> </tr>
+
+	<tr> <td> Enter email </td>  
+	<td> <input type=email id="uemail" name=uemail>  </td> </tr>
+
+	<tr> <td> Enter phone </td>  
+	<td> <input type=number id="uphone" name=uphone>  </td> </tr>
+
+	<tr> <td> Enter address </td>  
+	<td> <textarea cols=20 rows=5 id="uaddr" name=uaddr></textarea>  </td> </tr>
+
+	<tr> <td> Enter country </td>  
+		<td> <select id="ucountry" name=ucountry> 
+		<option value="India">India</option>
+		<option value="Nepal">Nepal</option>
+		<option value="Japan">Japan</option>
+		</select>  </td>  </tr>
 
 
-		<tr> <td> Enter State </td>  <td> <select name=ustate> 
-					<option value="mh">Maharashtra</option>
-					<option value="tn">Tamilnadu</option>
-					<option value="te">Telangana</option>
-					<option value="mp">Madhya Pradesh</option>
-			      </select>  </td> </tr>
+	<tr> <td> Enter State </td>  
+		<td> <select id="ustate" name=ustate> 
+			<option value="Maharashtra">Maharashtra</option>
+			<option value="Tamilnadu">Tamilnadu</option>
+			<option value="Telangana">Telangana</option>
+			<option value="Madhya Pradesh">Madhya Pradesh</option>
+	      </select>  </td> </tr>
 
 
-		<tr> <td> Enter City </td>  <td> <select name=ucity> 
-					<option value="i">Mumbai</option>
-					<option value="i">Chennai</option>
-					<option value="i">Hyderabad</option>
-					<option value="i">Bhopal</option>
-			      </select>  </td> </tr>
+	<tr> <td> Enter City </td>  
+		<td> <select id="ucity" name=ucity> 
+			<option value="Mumbai">Mumbai</option>
+			<option value="Chennai">Chennai</option>
+			<option value="Hyderabad">Hyderabad</option>
+			<option value="Bhopal">Bhopal</option>
+		</select>  </td> </tr>
 
-		</table>
+</table>
 
-		News papaers I read 
+	News papaers I read 
 
-		<ol type="I" start="6">
-			<li> Times of India </li>
-			<li> DNA </li>
-			<li> The Economics Times </li>
-		</ol>
+	<ol type="I" start="6">
+		<li> Times of India </li>
+		<li> DNA </li>
+		<li> The Economics Times </li>
+	</ol>
 
-		Breakfast I take
+	Breakfast I take
 
-		<ul type="none">
-			<li> Honey + Water </li>
-			<li> Tea </li>
-			<li> Idli Sambar </li>
-		</ul>
+	<ul type="none">
+		<li> Honey + Water </li>
+		<li> Tea </li>
+		<li> Idli Sambar </li>
+	</ul>
 
 		
-		<input type=submit name=submit value="Register Me">
+	<input type=submit id="registerme" name=submit value="Register Me">
 
 	</form>
 
 		click <a href=home.html> here </a> to goto home
-	</body>
+</body>
 
 		
 </html>
