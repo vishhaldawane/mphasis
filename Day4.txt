@@ -1,0 +1,188 @@
+
+
+
+		Eclipse for Java developers
+
+		Eclipse for JavaEE developers
+
+
+
+
+After installation of eclipse - u might get icon on the desktop
+
+	double click that icon
+	|
+	it will ask for the WORKSPACE directory 
+
+		c:\users\yourname\workspace <-- let it be default
+
+		press ENTER | OK
+
+	in eclipse
+	|
+	goto "window" menu -> "show view" -> "project explorer"
+
+
+
+
+	right click in the project explorer
+	|
+	new -> other...-> web -> static web project
+				 |
+				type the project name as
+				|
+				MyCalculatorProject
+				|
+				Finish
+--------------------------------------------------------
+
+1. eclipse download link
+
+   https://www.eclipse.org/downloads/packages/release/2020-06/r/eclipse-ide-enterprise-java-developers
+
+	(shared with you on chat box)
+
+2. open that link
+
+3. and press Download Links -> Windows x86_64
+					 |
+				it will ask to Download
+					|
+				eclipse-jee-2020....zip file is being
+				downloaded 391 MB in size
+
+4. extract this zip file at the desired location
+
+----------------------------------------
+Install Java SE 16
+
+	https://www.oracle.com/java/technologies/javase-jdk16-downloads.html#license-lightbox
+
+	
+
+	
+
+
+
+	EVERYONE OBSERVE NOW
+
+		ON MUTE
+
+
+		HOW TO LEARN
+
+		NO SOUND
+
+				BUT ONLY THE CODE
+
+		IS THAT OK ... LETS TRY THIS STYLE ALSO
+
+		AND U WILL EXPERIENCE SOMETHING DIFFERENT
+
+
+		TYPE OK IN CHAT BOX IF U SYNC WITH ME
+
+		GREAT
+
+
+
+
+
+
+
+
+
+
+
+		Observe that
+
+
+	entry.html		
+	|
+	3 fields
+	are entered
+	|
+	on submit -> action is -> welcome.html
+
+
+
+	HAVE U OBSERVED ON SUBMIT -> WELCOME IS INVOKED
+
+		YES OR NO  = CHAT PLS 
+
+	NOW WE WANT THIS WELCOME.HTML PAGE TO BE PREVENTED
+	IF ANY FIELD IS EMPTY!!!!!!!!!!!!!!
+		
+
+
+	write a code to
+	input two numbers
+
+		enter number 1 :   1
+
+		enter number 2 :   50
+
+		button -> Show Primes <-- on click of this button
+
+		and find out all the primes in this range of 1 to 50
+
+
+		a prime number = divisible by 1 and itself
+
+		  2 3 5 7 11 13 17 19 23 29 31 37 41 43 47
+
+	-----------------
+
+		what if the requirement is to input a number
+		and find out if it is a prime
+
+
+
+	do we have to write a code in scalable manner
+				|
+			-----------------
+			|		|
+			single		range of primes
+			prime
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

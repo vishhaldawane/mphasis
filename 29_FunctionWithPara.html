@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html>
+<body>
+  <p>Before the script...</p>
+  <script>
+	function showMessage(from, text) {
+	  from = '*' + from + '*'; 
+	  alert( from + ': ' + text );
+	}
+	let from = "Ann";
+	showMessage(from, "Hello"); // *Ann*: Hello
+
+	// the value of "from" is the same, the function modified a local copy
+	alert( from ); // Ann
+
+	function showMessage1(from, text = "no text given") {
+	  alert( from + ": " + text );
+	}
+	showMessage1("Ann"); // Ann: no text given
+
+	function anotherFunction() {return 'End User';}
+
+	function showMessage2(from, text = anotherFunction()) {
+	  alert(from + ":" + text);}
+
+
+	showMessage2("Vishhal");
+	showMessage2("Vishal","Admin User");
+
+  </script>
+
+  <p>...After the script.</p>
+
+</body>
+
+</html>

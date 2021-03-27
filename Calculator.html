@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+	<link  rel="stylesheet" type="text/css" href="Calculator.css">
+	<script type="text/javascript" src="Calculator.js"></script>
+</head>
+<body>
+	<form name="mycalc">
+		<label for="n1">Enter number1</label>
+		<input   type = "number" id="num1" name="number1"> <br>
+		
+		<label for="n2">Enter number2</label>
+		<input   type = "number" id="num2" name="number2"> <br>
+	 
+	 	<select id="operator" onchange="calculate()" >
+	 		<option value="+">+</option>
+	 		<option value="-">-</option>
+	 		<option value="*">*</option>
+	 		<option value="/">/</option>
+	 	</select>
+	 	<label for="out">Output</label>
+		<input   type = "number" id="output"> <br>
+	 </form>
+</body>
+</html>

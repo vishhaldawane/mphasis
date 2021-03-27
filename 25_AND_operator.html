@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html>
+
+<body>
+
+  <p>Before the script...</p>
+
+  <script>
+	let hour = 12;
+	let minute = 30;
+
+	if (hour == 12 && minute == 30) {
+	  alert( 'The time is 12:30' );
+	}
+	
+	if (1 && 0) { // evaluated as true && false
+ 	 alert( "won't work, because the result is falsy" );
+	}
+	alert( 1 && 0 ); // 0
+	alert( 1 && 5 ); // 5
+
+	// if the first operand is falsy,
+	// AND returns it. The second operand is ignored
+	alert( null && 5 ); // null
+	alert( 0 && "no matter what" ); // 0
+
+  </script>
+
+  <p>...After the script.</p>
+
+</body>
+
+</html>

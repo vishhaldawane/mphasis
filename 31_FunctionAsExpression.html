@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html><body>
+  <p>Before the script...</p>
+  <script>
+	function sayHi() {  alert( "Hello" );	}
+	alert( sayHi ); // shows the function code
+	sayHi(); // would run it
+	function greet() {   // (1) create
+	  alert( "Good Morning" );
+	}// semicolon not required, like , if, switch, for, while need not require semicolon
+
+	let whatsup1 = greet;    // (2) copy
+	let whatsup2 = whatsup1;
+
+	whatsup1(); // Good morning // (3) run the copy (it works)!
+	greet();  // Good morning  //     this still works too (why wouldn't it)
+	whatsup2();
+
+	let greetTheWorld = 		
+
+		function () 
+		{ // function expressed
+		 // alert( "Hows life?blue" );
+			return 500;
+		}
+
+       ; // semicolon here as a part to terminate this assignment statement
+	//alert(greetTheWorld);
+ 	//blue();
+		
+	let greetTheWorldAgain = greetTheWorld;
+	
+	greetTheWorld();
+	greetTheWorldAgain();
+
+  </script>
+
+  <p>...After the script.</p>
+
+</body>
+
+</html>
