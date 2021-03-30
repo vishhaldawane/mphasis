@@ -1,0 +1,26 @@
+<html>	<head>		<title> Date Entry </title>	</head>
+<script>
+var myDate = new Date();
+alert('myDate: '+ myDate);	alert('Millis  : '+ myDate.getTime());
+alert('DOW   : '+ myDate.getDay()); alert('Day   : '+ myDate.getDate());
+alert('month   : '+ (myDate.getMonth()+1)); alert('Year  : '+ myDate.getFullYear());
+alert('HOUR  : '+ myDate.getHours()); alert('Minutes : '+ myDate.getMinutes());
+alert('Seconds : '+ myDate.getSeconds());
+	function calcDiff() {
+		  let orderDate = document.getElementById("od");
+		  let shipDate = document.getElementById("sd");
+	  var od1 = new Date(orderDate.value);
+		  var sd1 = new Date(shipDate.value);
+  	alert('Order Date  : '+ od1); alert('Ship  Date  : '+ sd1);
+        alert('Order Month  : '+ od1.getMonth());
+	alert('Ship  Month  : '+ sd1.getMonth());
+        let diff = sd1.getTime() - od1.getTime();
+	let days = diff/(1000*60*60*24);
+	alert('Product would be shipped in : '+ days);
+		} </script> <body>
+Enter date of order    <input id="od" type=date> <br>
+Enter date of shipping <input id="sd" type=date> <br>
+<button onclick="calcDiff()">Find Difference</button> <br>
+	</body>
+	
+<html>

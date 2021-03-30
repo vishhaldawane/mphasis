@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js">	</script>
+
+	<script type="text/javascript">
+
+  	$(function() 
+	 {
+	   $("#para2").click( function() { $("h1").hide(2000);  } );
+ 	 }
+	);
+
+	$(function() 
+	 {
+	   $("#para1").click( function() { $("h1").show(3000);  } );
+ 	 }
+	);
+
+	$(function() 
+	 {
+	   $("button.tgl").click( function() { $("div.d1").toggle(1000);  
+			   $("#para4").fadeIn();  
+		} );
+
+ 	 }
+	);
+
+	
+	$(
+		function() 
+		{
+	   		$("button.fadeI").click( 
+				function() 
+				{ 
+					$("#para4").fadeIn(3500).fadeOut(3500);  
+					$("#para5").fadeIn("slow").fadeOut(3500);  
+					$("#para6").fadeIn(5500).fadeOut(3500);  
+				} 
+			); //end of click
+ 	 	} //end of function
+	); // end of jquery $
+
+	$(
+		function() 
+	 	{
+	   		$("button.fadeO").click( 
+				function() 
+				{ 
+					$("#para4").fadeOut(3500).fadeIn(1500);  
+					$("#para5").fadeOut("slow").fadeIn(3500);  
+					$("#para6").fadeOut(5500).fadeOut(4500);  
+				} 
+			); //end of click
+ 	 	} //end of function
+	); // end of jquery $
+
+
+		
+	</script>
+
+	<body>
+	<p id="para1"> This is <span id="d1">P</span>aragraph 1 </p> 
+	<p id="para2"> On click of me Header1 is hidden </p> 
+
+	<div id="para4"> This is <span id="d3">P</span>aragraph 3 </div> 
+	<div id="para5"> This is <span id="d4">P</span>aragraph 4 </div> 
+	<div id="para6"> This is <span id="d5">P</span>aragraph 5 </div> 
+
+	<button class="fadeI">FadeIn Effect</button> <br>
+	<button class="fadeO">FadeOut Effect</button> <br>
+
+	<button class="tgl">Toggle It</button>
+
+	<div class="d1"> This is a Div </div> </br>
+
+	<h1 class="para3"> This is a Header1 </h1> </br>
+
+		<table border=1>
+			<tr> 	<td>Apple</td> <td> Red </td> <td> <img src='apple.jpg' width=50px height=50px > </td> </tr>
+			<tr> 	<td>Mango</td> <td> Yellow </td><td> <img src='mango.jpg'  width=50px height=50px > </td> </tr>
+			<tr> 	<td>Jackfruit</td> <td> Green </td><td> <img src='jackfruit.jpg'  width=50px height=50px > </td> </tr>
+			<tr> 	<td>Berries</td> <td> Magenta </td> <td> <img src='berries.jpg'  width=50px height=50px > </td></tr>
+		</table>
+	
+	</body>
+
+</html>
