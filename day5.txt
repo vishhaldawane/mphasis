@@ -1,0 +1,277 @@
+
+
+
+
+
+	function callback
+
+
+		function rajesh() {
+			alert('hello');
+		}
+
+
+		let raj = rajesh;
+
+		raj();
+
+		rajesh();
+
+		let venky = function () { alert('hi venky');  } ;
+
+
+
+
+	 function foo() 
+	 {
+		to do
+	 }
+
+	 let far = function () { to do } ;
+
+	 let fee = x => to do;
+		   |    <-- body is here->	
+		arguments
+
+	 let fee = (x,y) => to do;
+		   |        <-- body is here->	
+		arguments
+
+
+		after the arrow => body of the function
+
+https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js
+
+	
+
+
+
+
+		$(function() 
+		 	{
+		   	   $("#d1").css("background-color","blue");
+			}
+		);
+
+		$(document).ready(function() 
+		 	{
+		   	   $("#d1").css("background-color","blue");
+			}
+		);
+
+		jQUery(document).ready(function() 
+			{
+		   	   $("#d1").css("background-color","blue");
+			}
+		);
+
+	$() - is also known as factory function
+	|
+	jQuery is same
+	
+		
+
+		
+
+	1 Jan 1970
+	till
+	today's date
+	how many milliseconds passed : 
+
+
+
+	month starts with 0 (jan)
+	month ends at   11  (dec)
+
+
+
+
+
+order date 
+cannot more than
+currentdate
+---------
+ship date cannot
+be lesser than
+order date
+====================================================================
+
+
+
+	.css()
+	.html()
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 	web page
+	
+	=========================================
+	|		header			|
+	|---------------------------------------|
+	|	nav bar				|
+	|---------------------------------------|
+	|	section		|		|
+	|			|		|
+	|-----------------------| aside		|
+	|	article		|		|
+	|			|		|
+	|---------------------------------------|
+	|		footer			|
+	=========================================
+
+	
+	=========================================
+	|			      ICICI Bank|
+	|---------------------------------------|
+	|Home Register Login			|
+	|---------------------------------------|
+	| Corporate	Personal|   Apply Loan	|
+	| Banking	Banking	|   Credit Card	|
+	|-----------------------|   Pay Bills	|
+	|	Some Adv	|   EMI Calc	|
+	|			|		|
+	|---------------------------------------|
+	|Maybe the site map |Contact Us| Address|
+	=========================================
+
+
+	to give a component/container/compartment  feel the page 
+
+
+<!DOCTYPE HTML>
+	
+</HTML>
+
+----
+video
+
+<!DOCTYPE html><html><body><h1>Video Tag</h1>    <!--<video preload="auto|metadata|none"></video>--><video width="720" height="480" controls muted autoplay loop>  <source src="video.mp4" type="video/mp4">    Your browser does not support the video tag.</video></body></html>
+--------
+
+
+audio
+<!DOCTYPE html><html><head><title>Audio Tag in HTML5</title><body><h3>Click to play an audio</h3><audio src = "Audio1.mp3" controls></audio></body></html>
+
+--------------
+<s>
+
+-----------
+
+<center>
+
+<!DOCTYPE html><html>   <head>      <h1>Centring </h1>   </head>       <body>          <p>This <i>text is <u> not </u> in the center </i></p>      <center>          <p>This text is in the center.</p>       </center>     </body>    </html>
+
+-----------
+<mark>
+<html><body><h1>The mark element</h1><p>i have to take <mark>vaccine </mark>today.so pls guys let me allow first:)</p></body></html>
+
+-----------------
+
+
+geolocation
+
+var x = document.getElementById("demo");function getLocation() {         navigator.geolocation.getCurrentPosition(showPosition);  }function showPosition(position) {  x.innerHTML = "Latitude: " + position.coords.latitude +   "<br>Longitude: " + position.coords.longitude ;}
+
+---------------------
+iframe
+
+-------------
+
+Mugambika
+
+blink code
+
+<!DOCTYPE html><html>  <head>    <title>        Blinking with JavaScript    </title>      <style>        #blink {            font-size: 20px;            font-weight: bold;            color:blue;        }    </style></head>  <body>    <p id="blink">        Hello everyone...    </p>          <script type="text/javascript">        var blink =             document.getElementById('blink');          setInterval(function () {            blink.style.opacity =             (blink.style.opacity == 0 ? 1 : 0);        }, 100);     </script><blink>hello</blink></body>  </html>
+----------------
+
+tanuja
+
+<!DOCTYPE><html> <body>  <progress> </progress><br><br>Downloading progress:  <progress value="140" max="1000"></progress> </body></html> 
+
+
+
+
+
+
+	
+	1. video
+	2. audio
+	3. mark
+	4. s
+	5. geolocation
+	6. center
+	7. iframe
+	8. summary
+	9. blink code
+	10. progress 
+	11. meter
+	12. dialog
+	13. event handler, itemscope
+	14. 
+
+
+	
+	
+
+
+
+
+
+	abc.html
+	-------------
+	<html>
+		<head>
+			<link rel="stylesheet" type="text/css" href="abc.css">
+		</head>
+	<h1>hello</h1>
+	<input type=text>
+	<p> hello para </p>
+	</html>
+
+
+	abc.css
+	----------
+	h1 { color : blue; }
+	input { color: red; }
+	p { color : green; }
+
+	abc.css
+	-----------
+	alert('hello javascript');
+	
+
+
+
+	
+	let sum=(x,y) => x+y;
+
+	sum(10,20);
+
+	
+
+
+
+
+
+
+
+
+
+
