@@ -1,0 +1,394 @@
+
+
+
+
+		The Java Programming Language
+
+				- with Vishhal
+
+		
+
+//the fundamental building block of any
+//java program is to write a "class"
+//highly structured language 
+//sanskrit - listen speak    read  write 
+
+//Greet.java -> class Greetings { main() {}  }
+
+
+
+		
+
+	1. start cmd prompt
+		window + r ( to get a run dialog )
+		cmd 
+	2. goto your desired drive/folder
+		d:
+		cd javatraining
+		cd java ( if this folder is not created
+			  then make it via -> mkdir java)
+	3. notepad Cricket.java
+	
+		class Cricketer
+		{
+			public static void main(String args[])
+			{
+				System.out.prinlnt("Hit Sixer");
+			}
+		}
+
+	4. after saving this file type  -> javac Cricket.java
+	5. dir -> to see the update list-> java  Cricketer
+
+		
+	if javac is not running then 
+	1. start cmd prompt
+
+	2. type -> path <-- to see the current path settings
+
+		echo %path% will also work to see the path settings
+
+	3. now add (append) the path to java jdk folder 
+
+		set path=%path%;c:\program files\java\jdk1.8.0_251\bin
+		    <--------no spaces after = and ; --------->
+
+	4. review the path -> path <--command 
+
+	
+
+
+
+
+	one .java file may have multiple class declarations
+
+	on compiling this .java file
+	it will generate all the respective .class file
+
+	if that class file has the main function, 
+	then it is eligible to	run 
+
+
+	Naming convention
+	------------------
+pascal->ClassNameIsLikeThis		MainUpmire,LegUmpire, DriverManager
+
+camel->	methodNameIsLikeThis		setLookAndFeel(), openConnection()
+camel->	variableNameIsLikeThis		totalScore, salaryOfJanuary
+
+capital->CONTANT_IS_LIKE_THIS		PI, SPEED_OF_LIGHT
+
+
+
+			Java Technology
+			|
+	-----------------------------------------
+	|		|		|
+	JSE		JEE		JME
+	|		|		|
+	standard	enterprise	micro (android)
+	|		|RC,HA,MT,P,C.T,S
+	core java	-----------------
+	|		|		|
+language fundamentals	Web		Enterprise JavaBeans
+oops concepts		|			|
+packages		Servlets(server)  --------------------
+access specifiers	JSP		  |	   |	    |
+exception handling	|		 Session  Entity  Message	
+multithreading		Angular(client)	  |	     |		|
+generics			---------------   ---------  -------
+collection f/w			|	    |	   |      |  |    |
+file handling			stateless stateful BMP  CMP sms  mail
+JDBC			website/app
+			bookmyshow
+			oyorooms
+				--->		->	->	->
+
+
+
+
+
+
+
+		Java Core		
+
+
+			Data types in Java
+				|
+		--------------------------------------
+		|				|
+	Primitive			Secondary
+	|
+-------------------------------
+|	  |	   | 	     |	
+integral floating character boolean
+|	   |		|	|
+byte  1	   float  4    char	boolean 1
+short 2    double 8   2 bytes	   false/true
+int   4			UNICODE
+long  8		  (ASCII + UNICODE )
+		    0 .... 65534
+		byte  nurseryRollNumber=13;
+		short collegeRollNumber=1678;
+		int   universityNumber=33980;
+		long  harvardUniveristyNumber=67890;
+
+
+	1 byte = 8 bits
+
+		1 bit = Binary digIT
+	
+	a single bit has potential of "to be off" or "to be on"
+					0		1
+
+	MSB							LSB
+	|							|
+	bit8	bit7	bit6	bit5	bit4	bit3	bit2	bit1
+	2^7	2^6	2^5	2^4	2^3	2^2	2^1	2^0
+   =>	128	64	32	16	8	4	2	1
+
+1 bit  = 0	0	0	0	0	0	0	0  0
+         0	0	0	0	0	0	0	1  1
+
+2 bits = 0	0	0	0	0	0	0	0  0
+	 0	0	0	0	0	0	0	1  1
+	 0	0	0	0	0	0	1	0  2
+	 0	0	0	0	0	0	1	1  3
+
+
+3 bits = 0	0	0	0	0	0	0	0  0
+	 0	0	0	0	0	0	0	1  1
+	 0	0	0	0	0	0	1	0  2
+	 0	0	0	0	0	0	1	1  3
+	 0	0	0	0	0	1	0	0  4
+	 0	0	0	0	0	1	0	1  5
+	 0	0	0	0	0	1	1	0  6
+	 0	0	0	0	0	1	1	1  7
+	
+4 bits =	16						   0
+								..15
+
+5 bits = 	32
+
+6 bits = 	64
+7 bits =	128
+
+8 bits = 	256	completing  (byte)
+9		512
+10		1024
+11		2048
+12		4096	
+13		8192
+14		16384
+15		32768 -- completing (short)
+16
+17
+18..
+..
+32		2 147 483,648 - completing (int )
+33
+..
+34..
+64		9 223 372 036 854,775 808
+
+
+	1 byte = 8 bits
+
+	8 bits means the range of the magnitude would be
+
+-128 -126 -125 ....-5 -4 -3 -2 -1 0 1 2 3 4 5 6 7 8 ...... 127
+<---negative dial---------------->|<---------positive-------->
+<--------------------------256 such numbers------------------>
+	
+
+
+
+float  4 ( 32 bits )
+
+	3.40282347 x 10 ^ 38 - 1.40239846 X 10 ^(-45)
+
+
+	class			object
+	|			|
+	People			People p1 = new People();
+				p1.clap();
+				p1.shout();
+
+	Cricketer		Cricketer c1 = new Cricketer();
+				c1.hitSixer();	
+				c1.defend();
+			
+
+Design of the "Object"		Instance of a "Class"
+
+blueprint of a house		actual house(s) out of the blueprint
+
+class SavingsAccount
+{
+	
+}
+
+	class Cat			Cat c1 = new Cat();
+	{				Cat c2 = new Cat();
+
+		String color;
+		int weight;
+		int age;
+
+		void meow() {
+		}
+		void chaseMice() {
+		}
+		void snooze() {
+		}
+		void drinkMilk() { }
+	}	
+	
+		Juice				Person
+		|				|
+	-------------------		------------------------------------------------------------------------
+	|	|	|		|	|	|	|		|		|
+	type	color	size		mind	age	gender	drinkJuice()	writeNotes()	withdrawCash()
+	|	|	|		|	|	|	<------------------activities ------------->
+	fruit	orange	200ml	    thoughts	22	'F'		that will affect the data
+				<-----|----->
+				past	 future
+
+		Juice j = new Juice();
+		Person p = new Person();
+
+		
+
+	Object = physical state + behaviour
+	c1	  white, 5, 1		meow();
+	c2	  black, 7, 2		snooze();
+	c3	  brown, 4, 4		chaseMice();
+
+	STACK			HEAP
+				color	 weight	 age
+				--------------------------
+				|	|	|	|
+				-------------------------
+	+---------------------->100
+	|
+	100
+	c1			meow() { } chaseMice() { }
+				snooze() { } drinkMilk() { }
+
+				color	 weight	 age
+				--------------------------
+				|	|	|	|
+				-------------------------
+	+---------------------->200
+	|
+	200
+	c2
+	
+
+from Kamala Betha to everyone:    5:11 PM
+4.shape
+from Mounika Mandala to everyone:    5:13 PM
+lamp
+from Revilla Prudhvi Sai Srinivas to everyone:    5:17 PM
+35.hotel receipt
+from Deme Aishwarya to everyone:    5:19 PM
+11.Electricity Bill 
+from Navya Divi to everyone:    5:21 PM
+27.railway ticket booking
+from Utkarsh Singh to everyone:    5:21 PM
+39.Robot
+from Shanmugi S to everyone:    5:21 PM
+36.University
+from Hima Geethika Irri to everyone:    5:22 PM
+19.Office
+from VARSHITHA M to everyone:    5:22 PM
+41. fruit
+from haneesha pillimitla to everyone:    5:22 PM
+18.Traffic
+from Catherin Revu to everyone:    5:23 PM
+6.mobile phone 
+from Nisarga to everyone:    5:23 PM
+28. Company
+from Aditya Shanbhag to everyone:    5:23 PM
+2.Cars
+from Akruti Khurana to everyone:    5:28 PM
+3. dance 
+from Mugambica to everyone:    5:29 PM
+24.finance
+from Darshan N G to everyone:    5:32 PM
+tanuja mic
+from chinthaparthi prudviraj kumar reddy to everyone:    5:35 PM
+7.Chocolate
+from gandikota tanuja to everyone:    5:36 PM
+sorry guys my  network was diconnected its showing in mute state in mylap that way i dont about it  
+from Pratyush Injam to everyone:    5:44 PM
+31.telephone bill
+from Prasanth Reddy to everyone:    5:45 PM
+30.zoo
+from Deepika Bondili to everyone:    5:45 PM
+10.college admission
+from Vinay K to everyone:    5:45 PM
+43. Export
+from Aavula Sowmya to everyone:    5:45 PM
+1.Ticket Booking
+from Marina Amulya to everyone:    5:45 PM
+20.logi n details 
+from Ashish Aggarwal to everyone:    5:46 PM
+46. cars
+from Ravi Singh to everyone:    5:46 PM
+34.Dog
+from vaddepalli shashank veera to everyone:    5:47 PM
+40.Airline reservation 
+from GUDDITI GNANESWARI to everyone:    5:47 PM
+16.book
+from Narun kumar to everyone:    5:47 PM
+25.cities
+
+
+
+
+
+	is "Sachin Tendulkar" a class or an object ?
+	   <------|-------->
+		  |
+	attribute of the object
+
+	neither the object nor the class
+
+
+	class Cricketer
+	{
+		int rank;
+		String cricketerName;
+		float strikeRate;
+		long totalScore;
+		int age;
+	}
+
+	class SachinTendulkar
+	{
+		int age;
+		long totalScore;
+	}
+	class ViratKohli
+	{
+		int age;
+		long totalScore;
+	}
+
+Cricketer cr1 = new Cricketer(1,"Sachin Tendulkar",87.90f,12000,40);
+Cricketer cr2 = new Cricketer(2,"Virat Kohli",67.90f,10000,34);
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
