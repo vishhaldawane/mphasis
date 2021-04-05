@@ -379,6 +379,520 @@ from Narun kumar to everyone:    5:47 PM
 Cricketer cr1 = new Cricketer(1,"Sachin Tendulkar",87.90f,12000,40);
 Cricketer cr2 = new Cricketer(2,"Virat Kohli",67.90f,10000,34);
 
+----------------------------------------------------------------
+Day 2
+
+
+
+
+oops concepts	
+
+
+
+		Object Oriented Programming System
+
+
+	POPS = procedure <-- data  (game of open functions)
+
+			int global;
+
+	GLOBAL		float myBalance=3600000;
+	GLOBAL		String bankTelPhoneNumber="180 540 350";
+			300 VARIABLES   10
+			+
+			2000 FUNCTION   20
+
+			int main() {
+				withdraw(50000);
+				deposit(30000);
+				changeBankTelephone
+			}
+			void withdraw(float amt) { // 35,50,000
+				myBalance = myBalance - amt;	
+				bankTelPhoneNumber="890 3664 585"; //out of contract activity
+			}
+			void deposit(float amt) { // 35,80,000
+				myBalance = myBalance + amt;	
+			}
+			void changeBankTelephoneNumber(String newPhoneNum)
+			{
+				bankTelPhoneNumber = newPhone;
+				myBalance = 12920930;
+			}
+			5000 LINES
+
+
+	OOPS =	data <-- procedure
+
+	SEMANTICS of an Object
+	"decide what data you have "
+	and identify contractual functions of it
+
+class BankAccount {			class Bank {
+	myBalance				bankTelPhoneNumber
+	|					|
+	withdraw(float)				changeBanktelPhoneNumber()
+	deposit(float)	
+}					}
+BankAccount ba1 = new BankAccount		Bank b1 = new Bank();
+BankAccount ba2 = new BankAccount		Bank b2 = new Bank();
+BankAccount ba3 = new BankAccount		Bank b3 = new Bank();
+		ba4..ba10000			
+		
+ba1.withdraw(5000)
+ba2.withdraw(7000)
+
+
+	YOU				NEIGHBOUR
+	|				|
+	myFood				theirFood
+	|				|
+	set() get()			set() get()
+
+	mySalary			theirIncome
+	|				|
+	get()				get()
+
+
+
+				Tailor - Jack
+	
+	Jane					julie			robert		peter
+	|					|			|		|
+	measurer				cuttingmaster		stitcher	delivery
+----------------------------------------+
+|	measuremetData			|
+|	1	20			|
+|	2	23			|
+|	3	30			|
+|	4	28			|
+|	..	..			|	
+|					|
+|	measure()	makeDiagram()--------->	cutting()	stitching()
+|	|		  |		| 	|			|
+|	initialization 	refer the data	|	no context to
+|	of the data	as read ONLY	|	refer the data
+|					|	(even no read)
++---------------------------------------+
+
+	how can I access your neuron
+
+
+
+	OOPS Concepts
+	
+		1. Abstraction
+			it is the "what is it?" part of an object
+
+			"What is" an ATM?
+				withdraw cash
+
+			"what is" telephone?	
+				remote talk
+
+			hiding the complexity of an object
+			dealing with the USAGE of the object
+
+			- data abstraction ( how much cash in ATM?)
+			- procedural abstraction ( log the user/ 
+			take video shooting of the user/record the voice)
+
+		2. Encapsulation
+
+			it is the "how is it?"  part of an object
+			
+			"how is an ATM working?"
+				how the cash is dispensed
+			"how is a telephone working"
+				how the speech is transmitted
+
+		responsible for the internal functioning of an object
+		
+		bind the data and concerned function together
+			- private data + accessible function
+		
+
+
+		3. Polymorphism
+			ability of a business entity to have
+			multiple forms
+			poly = many
+			morph = form/appearance
+
+			a. function overloading
+			- ability of a function to be redefined
+			and can be distinguished based 
+			on 
+				i. type of parameter/argument
+				ii. number of parameter
+				iii. sequence of parameter
+
+
+			b. function overriding (inheritance related)
+
+
+		4. Inheritance
+
+			ability of a "business entity" to acquire
+			properties from "existing business entites"
+			  |
+		(data + function + nested classes)
+
+		    BankAccount - base class / super class
+			| acno name balance
+			| withdraw(){ subtract } deposit() { add }
+	---------------------------------
+	|		|		|
+SavingsAccount	CurrentAccount	   CreditAccount - derived classes/
+  |acno 		|acno 		 |acno		sub classes
+  |name 		|name 		 |name
+  |balance		|balance	 |balance
+  |+ intersetRate	|+overDraftLimit |creditLimit
+  |					 |
+FixedDepositAccount
+  |acno
+  |name
+  |balance
+  |+ maturityPeriod
+		
+
+
+		
+
+
+
+
+
+	Constructor
+
+
+		- it is a "special function" that has the "same
+		name" as of the enclosing class
+
+		- it does NOT have return type
+
+		- but it can take parameters/arguments
+
+		- it is AUTOMATICALLY invoked DURING OBJECT
+		CREATION TIME
+		
+		- for a given object it cannot be called twice
+
+			BankAccount ba1 = new BankAccount();
+			- its called above
+
+			- again it cannot be called
+			ba1.BankAccount(); //illegal
+
+			
+
+
+		class Doctor
+		{
+			<-- is there a constructor in this class?	
+		}
+		
+	
+	
+
+		1. explore loops
+
+			do while
+			while
+			for
+
+		2. switch condition
+			various choices (int, char, String)
+			make a food menu
+				1.
+				2.
+				3.
+				choice 
+			loop this switch in a do while....
+
+		3. explore inheritance 
+			single
+			multilevel
+			multiple level (interfaces)
+
+		4. ppt 
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		5. Object communication
+
+			One object communcates with another 
+			Object
+
+
+
+
+
+
+
+	BankAccount ba = new BankAccount(); 
+	ba.setBalance(500000); //accessible methods
+	ba.showBalance(); //accessible methods
+
+	//but bankBalance is INDIRECTLY accessible
+	
+	below private data is bound by accessible methods
+
+	class BankAccount
+	{
+		private float bankBalance;
+
+		void setBalance(float amt) {
+			bankBalance = amt;
+		}
+		void showBalance() {
+			Sop("Balance is ; "+bankBalance);
+		}
+	}
+
+	EN "capsule" ate it
+		|
+	  wrap the bittermost /sunlight/air
+	  medicine in a "small" "eatable" "plastic" container
+
+
+
+
+
+
+
+default / implicit no-arg ctor
+
+what is common between
+Point2D and Point3D?
+x,y		x,y
+  		z
+
+Inheritance is a propeller of 
+a JavaShip
+
+	Point2D
+	|
+----------------------
+|isA		|
+Point3D
+
+every Point3D is implicitly Point2D
+but not other way round
+every point2D is not a Point3D
+
+	class Point2D
+	{
+	  private int x;
+	  private int y;	
+		
+	 void setPoint2D(int a,int b)
+         { x = a; y = b;}
+
+	 Point2D(int a,int b)
+         { x = a; y = b;}
+
+	}
+
+Point2D p1 = new Point2D(75,80);
+ or
+Point2D p1 = new Point2D();
+p1.setPoint(75,80);
+
+
+	Doctor
+	|
+-------------------
+|isA
+Surgeon
+   |
+------------------
+|isA		|isA
+NeuroSurgeon	HeartSurgeon
+
+
+
+	BankAccount
+	|
+---------------------------
+isA		|isA
+SavingsAccount  CurrentAccount
+|isA
+FixedDepositAccount
+
+
+
+	Linear inheritance 
+
+			Object
+			|
+		------------------------------
+		|
+		Point2D
+		|x,y
+	---------------------
+	|isA		|
+	|		|
+L	Point3D		ColouredPoint2D		R
+	|z		|  color
+	|		
+	--------+
+		|
+		|isA
+		|
+	ColouredPoint3D
+	x,y,z, (color)
+
+
+
+
+	hasA Relationship
+	
+		Human is a Heart
+
+		Human hasA Heart
+
+
+		Human is a Pen
+
+		Human hasA Pen
+
+		Human usesA Pen
+		
+		Human producesA Article
+
+
+	Car has an Engine
+	or
+	Car is an engine
+
+
+	hasA means containment 
+
+	class WholeEntity
+	{
+		PartEntity p1 = new PartEntity();
+		PartEntity p2 = new PartEntity();
+		PartEntity p3 = new PartEntity();
+		PartEntity p4 = new PartEntity();
+	}
+
+
+	class Machine {
+
+	}
+	class WashingMachine extends Machine //isA
+	{
+
+		WashingTub washTub = new WashingMachine(); //hasA
+
+		void wash() {
+			Sop("Washing....");
+		}
+	}
+
+	
+	class Human extends Animal {
+		Heart h = new Heart();
+
+	}
+
+	class Person extends Human //isA
+	{
+		gender
+		age
+		name
+		AadhaarCard aCard = new AadhaarCard(); //hasA
+
+
+	}
+
+	class Student extends Person
+	{
+		ReportCard rpt1 = new ReportCard();
+		ReportCard rpt2 = new ReportCard();
+		ReportCard rpt3 = new ReportCard();
+		...
+
+
+	}
+
+Four Basic functions
+----------------------
+
+ return type    argument/parameters passed
+	|          |
+	void fun(void)
+	{
+		code of the function 
+	}
+
+function    
+     "without return value"
+1. 	|	          "without arguments" and 
+	|		  |
+	void clearScreen( | )
+	{
+
+	}
+
+
+function    
+     "without return value"
+2. 	|	          "with arguments" But
+	|		   |
+	void gotoLocation( int x, int y )
+	{
+
+	}
+
+function    
+     "with return value"
+3. 	|	          "with arguments" And
+	|		    |
+	int   calcRectArea( int l, int b )
+	{
+		return l * b;	
+	}
+
+function    
+     "with return value"
+4. 	|	      "without arguments" But
+	|		|
+	float   calcPI( | )
+	{
+		return 22/7;
+	}
+	
+
+	Passing Object as a parameter to the function
+
+	Returning  Object as a return value from a function
+
+
+
+
+
+
+
+
+
+
+
 
 
 
