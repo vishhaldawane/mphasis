@@ -891,6 +891,144 @@ function
 
 
 
+	class Machine
+	{
+
+	}
+	class ATMMachine extends Machine
+	{
+
+	}
+
+	class Reader { }
+	class CardReader extends Reader {
+
+	}
+
+
+
+
+
+
+
+
+
+
+
+	a. single level
+			BankAccount
+			|
+		-----------------
+		|
+		SavingsAccount
+		|
+		FixedDepositAccount
+
+	b. multi-level 
+
+
+	c. hierarchical level
+
+		Animal
+		|x
+	-----------------------------------------
+	|		|		|
+	Bird		Mammal		Fish
+	|layEggs();	|  |giveBirth()	|layEggs();
+	-----------------  --------------
+		|		|
+	  	Bat		Whale
+	FlyingMammal		
+			above (c) is possible in C++
+			but not in JAVA ( use interfaces* )
+	
+	
+
+
+
+
+	b. function overriding
+
+		let subclass re-define a function
+		that has the "same name" as of 
+		its "nearest parent class"
+
+	
+
+	it is possible that the super class handle can point to
+	its child object
+
+		Doctor d = new Doctor();
+
+		d.diagnose();
+
+
+		d = new Surgeon();
+
+		d.diagnose(); //????
+
+		d = new HeartSurgeon();
+
+		d.dianose();  //???
+
+
+
+
+
+
+	static 	member		vs		non=static member
+	|					|
+	is class's data				object's data
+	|					|
+	it is created before the		it is created during
+	object					the object creation
+	|
+	kiteCount				color
+						owner
+						length
+	showKiteCount() {			showKite() { }
+	}					fly() { }
+						kiteFight() { }
+
+
+
+
+
+
+	==============================================================
+	|	  |	field	    |	method	     |	class	     |
+	=============================================================|
+	|	  | shared data	    | to refer other |  lets defer   |
+	|static	  | across all	    | static members |  this to      |
+	|	  | objects of the  | of the class   |  future       |
+	|	  | class	    |                |  sessions     |
+	=============================================================|
+	|	  | its a constant  | cannot be      | cannot be     |
+	|final	  |		    | overridden     | extended or   |
+	|	  |		    |                | subclassed    |
+	=============================================================|
+	|abstract |		    |                |               |
+	|	  |		    |                |               |
+	|         |		    |                |               |
+	=============================================================|
+
+
+		final field is a constant 
+		final function cannot be overridden
+		final class cannot be extended
+
+		lets try
+
+
+	
+
+
+
+
+
+
+
+
 
 
 
