@@ -1007,10 +1007,150 @@ function
 	|final	  |		    | overridden     | extended or   |
 	|	  |		    |                | subclassed    |
 	=============================================================|
-	|abstract |		    |                |               |
-	|	  |		    |                |               |
-	|         |		    |                |               |
+	|abstract |	NA	    |partial contract|  a class with |
+	|	  |		    |of a class      | partial contr-|
+	|         |		    |(method without | act           |
+	|	  |                 |     body)      |               |
 	=============================================================|
+
+	drawing artist -> draw abstract images
+					 |
+				------------------------------------
+				|	|	|	|	
+		seer-->		cloud	face	forest	God	
+	will decide the 
+	implementation
+
+	
+	abstract class GeometricalShape
+	{
+
+	}
+	it is not compulsory to have abstract method in an abstract
+	class.
+	But an abstract method must reside in an abstract class
+
+	class Triangle { }
+	class Rectangle { }
+	class Circle { }
+
+
+
+	abstract class BankAccount { } //perfect syntax
+
+	abstract class BankAccount { 
+		void withdraw() { }
+	} //perfect syntax
+
+	class BankAccount {
+		abstract void withdraw();  //illegal 
+	}
+
+	abstract class C {
+		abstract void fun(); //legal
+	}
+
+	abstract class BankAccount {
+		abstract void fun(); //legal
+		void foo() { }
+	}
+
+		BankAccount <===abstract terminology
+			|it acts as a hook for business rule
+			| withdraw();  deposit(); <--undefined
+			|
+	---------------------------------------
+	|		|		|
+SavingsAccount	CurrentAccount	CreditAccount <== ATM (options are shown)
+withdraw(){}	withdraw(){}		withdraw(){} <--mandatory implementation
+deposit(){}	deposit(){}		deposit(){} <--mandatory implementation
+
+	James Gosling - The Java Programming Language
+	Ken Arnold
+
+
+		Java Inheritance
+			|
+	---------------------------------------
+	|			|
+	Derivation		Implementation
+	|			|
+	A			A <--- abstract class
+	| fun(){}		| fun(); <-- partial contract of a class
+	B			B
+	| fun(){}		| fun() { } must be defined here
+	|			|
+	C fun(){}		C fun() { } may/may not be overridden
+
+
+
+
+
+	whenever our brain has some clue
+	then it is abstract terminology
+
+
+	whenever our brain has no clue at all
+	then it is interface terminology
+
+
+1			Instrument
+				|use(); //primordial function of all 8 concrete examples 
+		--------------------------------------------------
+		|					|
+2	MusicalInstrument				MedicalInstrument		
+		|play();					|operate();
+	-----------------------------		---------------------------------------
+	|			|			|		|
+3 StringBasedMusical   AirBasedMusical		SurgicalMedical		PathologicalMedical
+  Instrument	       Instrument		Instrument		Instrument	
+     |tuneStrings();	     |clean();		     |steralize();  	    | reader();
+ ---------------	-------------		-------------------	---------------------
+  |           |		|	   |		|		|	|		|	
+4 Violin    Guitar	Flute	Saxophone 	Cutter	      Needle	Glucometer	ECGMachine
+  bowing()  pluck()	operate     pushButton() cut(){}      poke(){}	  readSugar(){}   readCardioGraph(){ }
+  {}        {}		SixHoles()  {}			     stitch(){}
+	     |		{}
+ 	     |
+	ElectronicGuitar
+	  presets() { }
+ <--------------------all these eight exist in material form------------------------------>
+
+
+
+
+	for an abstract child it is not mandatory
+	to fulfill the contracts of its abstract parent
+	it may fulfill or may not . or simply it 
+	can be forwarded to the next child
+
+
+
+	abstract class A
+	{
+		abstract void fun();
+	}
+	abstract class B extends A
+	{
+	
+	}
+	class C extends B {
+		
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 		final field is a constant 
@@ -1027,6 +1167,125 @@ function
 
 
 
+	interfaces
+
+		- 
+
+	fundamental unit of programming in java is a CLASS
+
+but     fundamental unit of object oriented progamming is to write a
+	TYPE	
+
+		pure type - interface
+
+
+			Payment <-- pure type 
+			|
+			|	pay();
+			|
+	-----------------------------------------
+	|		|		|
+  ChequePayment	    CashPayment      NEFTPayment
+    pay() { }		pay(){ }	pay(){ }
+
+
+	Ask the Sun about the light or brightness
+	Sun wont reply !!!
+
+	how come a blind person by birth knows darkness
+	if never experienced light!!!!
+ 
+			Light - pure one 
+			|
+			| does light know darkness???
+			| if not? then it does not know light as well
+	------------------------------------
+	|		|		|
+	SunLight	MoonLight	TubeLight <-- implementations
+
+	
+	interface is a strict version of abstract classes
+
+
+
+	
+
+
+
+
+
+
+
+	Packages
+
+	(CANNOT HAVE SPACES)		(CAN HAVE SPACES)
+		 |				|
+		packages are similar to directories
+		|				|
+		Java			operating system
+					
+		
+			
+			d:
+			|	
+	main package->	jungle
+			|
+		-----------------------------------------
+		|	|	|		|
+sub package->	cave	tree	river		safari
+		|	|	|		|
+		Tiger	Monkey	Crocodile	Visitor
+		|	|	|		|
+private	 ->	age	fruit	riverDepth	camera
+
+	by keeping each class in its respective folder
+	how to avail it????? by making/declaring that 
+	folder as package
+
+	
+		There four access specifiers
+
+			1. private
+		 	2. protected
+			3. public
+			4.       <-- default ( blank / not given )
+
+===============================================	
+cave
+	class Tiger  
+	{
+	     private   int privateAge; //2nd one
+	     protected int protectedAge; //2nd one
+		public int publicAge; // 3rd one
+		       int defaultAge; //4th one
+
+	}
+	class WhiteTiger extends Tiger
+	{
+		//here protectedAge can be referred
+	}
+	class ButterFly { }
+===============================================	
+	all 4 variables of the Tiger class are also the part
+	of WhiteTiger (apart from WhiteTiger's variables)
+
+	BUT THE "FOUR ACCESS SPECIFIERS" WOULD MAKE IT LESSER OR MORE
+	RESTRICTED TO ACCESS/REFER THEM (TO USE THEM )
+
+	1. privateAge variable is only available to access
+	   inside the Tiger class body
+
+	2. proctectedAge variable is available inside the Tiger
+	   class and all of its subclasses
+
+
+
+
+1.private-inside class
+2.public- inside class, inside & outside package , 
+outside package subclass.
+3.default- inside class ,only inside package.
+4.protected- inside class , inside package , outside package subclass.
 
 
 
@@ -1039,8 +1298,280 @@ function
 
 
 
+	beyond interfaces/abstract classes/or ordinary classes
+
+		one rule is fixed and that is below
+
+
+		SuperClass  handle = new ChildClassObject();
+		|		   = new 
+	this can be an interface	child of interface
+	or abstract classs		child of abstract class
+	or any other normal class	or child of normal class
+
+	A foo(); <-- interface
+	|
+	B foo() { }
+	  fun() { }
+
+	A <--abstract class
+	|
+	B
+
+	A <--normal class
+	|
+	B
+
+		A a  = new B();
+		 via a u can only invoke methods of A 
+		 but never the method of B 
+		a.foo();
+		a.fun();//illegal, since handle a does not know fun()
+			
+
+
+=====================================================================
 
 
 
+	Exception handling
+
+
+		programming languages
+		there are various types of errors
+				|
+	-----------------------------------------------
+	|	     |	        |	   |	   |
+	compile     linker     runtime    fatal    logical
+	|		|	|	    |	       |
+	"syntax"    libraries  Exception   device     4+4=16
+				|	   issue/	developer's
+				|	  critical	logic 
+				|
+		a program faces errors during its 
+		runtime is known as Exception
+
+
+	development 	vs	deployment
+	|			|
+	coding it		installed and run
+	|			|
+	airport activities	|
+	|			|
+	on the run-way		in the sky
+
+
+	Eather
+	|
+	Air		<============
+	|
+	Fire <-heavy
+	|
+	Water <-heavier
+	|
+	Earth <--heaviest - Flight
+
+
+
+
+
+	let me know if its cracking the sound
+
+
+
+			Exceptions (runtime errors)
+			    |
+	 	---------------------------------
+		|			|
+		"before run"		"during run"
+		|			|
+by compiler ->  checked		   un"checked"
+ (javac)
+		|			|
+	1.   wear a mask	    oxygen level 	
+	2.   carry/apply 
+             sanitizer
+	3.   wash your hand
+
+
+
+			class Car 
+			{
+				void longDrive()  //50km
+				{
+
+				}
+				void shortDrive() //5km
+				{
+
+				}
+			}
+				
+		
+	1. what will u care "before" the shortdrive???
+		key,driving license,helmet
+
+	2. what care u might have to take "during" the shortdrive???
+		speed limit, red-signal, zebra crossing
+		speed breakers
+
+	3. what will u care "before" the longdrive???
+		key,driving license,helmet
+		best route,condition of vehicle, fuel,
+		tyre pressure (stepney wheel of a car)
+		vehicle papers, water bottle, food, sufficient money
+		covid test rpt, 
+
+	4. what care u might have to take "during" the longdrive???
+		speed limit, red-signal, zebra crossing
+		speed breakers
+	1...5..10...15...20...25...			....200
+
+
+	why to use try catch instead of if and else
+
+
+
+fundTransfer(src, trg, trfAmt)
+{
+	if(trg present)
+	then
+		if(src present)
+		then
+			if(src bal > trfAmt)
+			then
+				src withdraw trfAmt
+				trg deposit trfAmt
+			else
+				insufficient bal at src
+		else
+			src not found
+	else
+		trg not found
+
+}
+	in the above code where is the business code
+	and where is the error code
+	
+
+
+fundTransfer(src, trg, trfAmt)
+{
+	if(trg not present)
+	then
+		trg not found
+	else
+		if(src not present)
+		then
+			src not found
+		else
+			if(src bal > trfAmt)
+			then
+				src withdraw trfAmt
+				trg deposit trfAmt
+			else
+				insufficient bal at src
+
+}
+
+
+	the problem with if and else jungle
+	is that the error logic and business logic
+	is intermingled/mixed
+	and the programs will lack clarity of business code
+	increase the maintenance of the code too
+
+
+fundTransfer(src, trg, trfAmt)
+{
+	try
+	{
+		1 find src 
+		2 find trg
+		3 find src bal > trfAmt
+		4 src withdraw trfAmt
+		5 trg deposit trfAmt
+	}
+	catch(if trg not found)
+		trg not found
+	catch(if src not found)
+		src not found
+	catch(src bal > trfAmt)
+		insufficient bal at src
+
+}
+
+
+
+
+
+
+
+
+			Object
+			|
+		---------------------------------
+				|
+				Throwable
+				|
+		----------------------------------
+		|			|
+		Error		  Exception
+				   | "checked" by the compiler
+		-------------------------------------
+		|		|		|
+	RuntimeException	IOException	SQLException .. .. ..
+	| "un-checked"			|
+	| by the compiler	FileNotFoundException
+	|isA
+------------------------------------------------------
+|		      |   |   |                   |  |
+|		      |   |TyrePuncturedException |SpeedBreakerDishonouredException
+|		      |   |RedSignalDishonouredException
+NullPointerException  |  ArithmeticException 
+		      |
+		IndexOutOfBoundsException
+			|
+	-----------------------------	
+	|			|
+ArrayIndexOutOfBoundsException	StringIndexOutOfBoundsException
+
+
+	+-------if y is 0 (then JVM wont send this line
+	|		|  to the cpu)	
+z = x / y went to the JVM   rather it will do following 
+			|  code
+			| ArithmeticException e = new 
+			|	ArithmeticException ("/ by zero");
+			|	throw e;
+			|
+			+-----------> CPU
+					
+	the thrown object must be caught by the
+	receiving application code, 
+	if uncaught then it is rethrown back to
+	the same place from where it was thrown
+
+	and there it is never recaught, and program terminates
+
+
+	so it is essential to catch the thrown object
+	by writing try catch code
+
+	and the appropriate data type of the thrown object
+	in the catch block
+
+
+	try catch finally   throw throws 
+
+
+
+	Vehicle
+	|
+	Car
+	|
+	SedanCar
+	|
+	HondaCar
 
 	
