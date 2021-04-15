@@ -3,6 +3,7 @@ public class CarTest {
 		System.out.println("Begin main");
 		Car myCar = new Car();
 		try {			
+			myCar.start(); //without key how come this is started..
 			myCar.shortDrive();		
 			}
 		catch(TyrePuncturedException e) {		
@@ -13,11 +14,29 @@ public class CarTest {
 		}
 		catch(SpeedBreakerDishonouredException e) {		
 			System.out.println("oh...my vehile damanged on speed breaker : "+e);
+		} catch (CarKeyException e) {
+			System.out.println("oh...where have I kept the car keys??? "+e);
+			
 		}
 		System.out.println("End main");
 	}
 }
+class CarKeyException extends Exception { //This is checked exception one
+	CarKeyException(String msg) {		super(msg); 	}
+}
 class Car {
+	void start() throws CarKeyException // this clause is mandatory for checked one 
+	{
+		double d = Math.random()%10;
+		if(d>0.75) { // if my memory is more than 80%
+			System.out.println("Found the Car key...");	System.out.println("Starting the car...");
+		}
+		else {
+			CarKeyException cke = new CarKeyException("Car Key Not Finding...");
+			throw cke;
+		}
+	}
+	
 	void shortDrive() {
 		System.out.println("Begin Short Drive");
 		for (int i = 1; i <= 5; i++) {
