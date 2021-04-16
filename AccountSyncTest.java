@@ -5,8 +5,8 @@ public class AccountSyncTest {
 		System.out.println("Before deposits : ba : "+ba);//it invoked toString()
 		
 		Teller teller1 = new Teller("Medha",ba,5000);
-		Teller teller2 = new Teller("Swetha",ba,7000);
-		Teller teller3 = new Teller("Marina",ba,8000);
+		Teller teller2 = new Teller("\tSwetha",ba,7000);
+		Teller teller3 = new Teller("\t\tMarina",ba,8000);
 		
 		teller1.start();
 		teller2.start();
@@ -41,27 +41,28 @@ class BankAccount {
 		System.out.println("Bank Acc Balance: "+accBalance);
 	}
 	
-	void deposit(double amt) {
-		System.out.println("Depositing....");
-		double currentBalance = getBalance();
-		System.out.println("Balance got");
+	//means allow only one thread to enter in this method
+	synchronized void deposit(String tn, double amt) {
+		System.out.println(tn+" : Depositing...."+amt);
+		double currentBalance = getBalance(tn);
+		System.out.println(tn+" : Balance got : "+currentBalance);
 		
-		System.out.println("Calculating...");
+		System.out.println(tn+" : Calculating...");
 		double newBalance = currentBalance + amt;
-		System.out.println("Calculated...");
+		System.out.println(tn+" : Calculated...");
 		
-		setBalance(newBalance);
-		System.out.println("Balance is set...");
+		setBalance(tn,newBalance);
+		System.out.println(tn+" : Balance is set..."+accBalance);
 	}
 	
 	//assume below methods are dealing with DATABASE
-	private double getBalance() {
-		System.out.println("Trying to read the balance...");
+	private double getBalance(String t) {
+		System.out.println(t+" : Trying to read the balance...");
 		try { Thread.sleep(400); } catch(InterruptedException e) { }
 		return accBalance;
 	}
-	private void setBalance(double amt) {
-		System.out.println("Trying to set the balance...");
+	private void setBalance(String t, double amt) {
+		System.out.println(t+" : Trying to set the balance...");
 		try { Thread.sleep(400); } catch(InterruptedException e) { }
 		accBalance = amt;
 	}
@@ -79,7 +80,7 @@ class Teller extends Thread //Method A
 		amountToDeposit = amtToDepo;
 	}
 	public void run() {
-		System.out.println("Teller "+tellerName+" started depositing..."+amountToDeposit);
-		baRef.deposit(amountToDeposit);
+		//System.out.println(tellerName+" : started depositing..."+amountToDeposit);
+		baRef.deposit(tellerName, amountToDeposit);
 	}
 }
