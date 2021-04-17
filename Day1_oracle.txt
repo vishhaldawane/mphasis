@@ -1,0 +1,170 @@
+
+
+
+
+
+
+	Oracle SQL / PLSQL
+
+
+
+1.	1
+2.			6
+3.	1 
+4.	2
+6. 			6
+5.	1
+7.	1
+9.			6
+10. 	2
+11.	1
+12.	1
+8.	1
+13.	0
+14.	0
+15.			5
+16.	1
+17.	1
+18.	3
+19.	1
+20.	0
+21.			5
+23.	0
+25.	1
+26.	1
+27.			5
+28.	4
+29.	3
+24.  			6
+30.	1
+31.	1
+32.	1
+33.	3
+35.	0
+36.			6
+37. 	4
+38.	1
+39.  	2
+40.	1
+41.				8
+42. 	0
+43.	0
+44.	1
+34.	1
+45.	0	
+
+
+
+
+
+
+		DataBase Management 	System -DBMS
+		|	 create/update    |
+		|	view/delete    automate
+		|
+	---------------------------------------------
+	|	|	|	   |		|
+   integral  floating  character String		date
+
+	how do you store your exam data
+
+
+	you make a time table
+
+	number  date		time	varchar		varchar
+================================================================
+columns->Day	Date		Time	Subject		Venue
+================================================================
+row->	 1	19-Apr-21	10:30	Maths		School1
+----------------------------------------------------------------
+row->	 2	20-Apr-21	11:30	Physics		School2
+----------------------------------------------------------------
+row->	 3	21-Apr-21	14:30	Java		School1
+----------------------------------------------------------------
+row->	 4	22-Apr-21	09:30	English		School1
+----------------------------------------------------------------
+row->	 5	23-Apr-21	10:30	Geometry	School1
+----------------------------------------------------------------
+row->	 6	24-Apr-21	12:30	Biology		School2
+----------------------------------------------------------------
+
+there can be a table to hold my personal information
+there can be a table to hold marks of each topic
+
+
+
+	SQL
+
+
+	"Structured" Query Language
+
+
+
+	DQL - data query language
+		select <-- find rows
+
+	DDL - data definition language
+		create/alter/truncate/drop <-- table structure
+
+	DML - data manipulation language
+		insert/update/delete <--rows
+
+	TCL - transaction control langauage
+		commit/rollback <-- save or discard data rows
+
+	DCL - data control language
+		grant/revoke <-- permissions to create/deny data
+
+
+
+		DQL
+
+	select  * | columnlist   from  table 
+                |
+	  all columns
+		
+
+
+
+ EMPNO ENAME      JOB                 MGR  HIREDATE         SAL       COMM     DEPTNO
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------
+      7839 KING       PRESIDENT            17-NOV-81       5000                    10
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                    10
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                    10
+
+
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0         30
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30
+
+      7566 JONES      MANAGER         7839 02-APR-81       2975                    20
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                    20
+      7369 SMITH      CLERK           7902 17-DEC-80        800                    20
+      7788 SCOTT      ANALYST         7566 09-DEC-82       3000                    20
+      7876 ADAMS      CLERK           7788 12-JAN-83       1100                    20
+  
+
+
+	EMP->				KING       
+	EMP->				|7839 PRESIDENT
+			-----------------------------------
+	DEPT->		|10 ACCOUNTING	|20 RESEARCH	| 30 SALES
+	DEPT->		|NEW YORK	|DALLAS		| CHICAGO
+			|		|		|
+	EMP->		CLARK		JONES		BLAKE		
+	EMP->		|7782 MANAGER	|7566 MANAGER	| 7698 MANAGER
+			|		|		|
+		--------------	   --------------	---------------------------------
+EMP->		|10		   |20		|20	|30	|30	|30	|30	|30
+		|		   |		|	MARTIN ALLEN  TURNER   WARD	JAMES	
+		|		   |		|	7654    7499    7844    7521	7900
+EMP->	   MILLER		FORD		SCOTT   <---------SALESMAN-------->	CLERK
+           |                    |               |
+EMP->	   |10 CLERK		|7902 ANALYST	|7788 ANALYST
+				|		|
+EMP->				|20		|20
+EMP->				SMITH		ADAMS	
+				7369 CLERK	7876 CLERK
