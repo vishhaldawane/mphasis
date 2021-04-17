@@ -1518,11 +1518,11 @@ fundTransfer(src, trg, trfAmt)
 		|			|
 		Error		  Exception
 				   | "checked" by the compiler
-		-------------------------------------
-		|		|		|
-	RuntimeException	IOException	SQLException .. .. ..
-	| "un-checked"			|
-	| by the compiler	FileNotFoundException
+		------------------------------------------------------
+		|		|		|		|
+	RuntimeException   CarKeyException	IOException	SQLException .. .. ..
+	| "un-checked"				|
+	| by the compiler			FileNotFoundException
 	|isA
 ------------------------------------------------------
 |		      |   |   |                   |  |
@@ -1574,4 +1574,354 @@ z = x / y went to the JVM   rather it will do following
 	|
 	HondaCar
 
+
+			Door
+			|
+		-----------------------
+		|		|
+ManuallyLockedDoor	AutomaticallyLockingDoor (main door of the house)
+manual Godrej		 (the autolock is installed
+lock is required	  on the body of the door)
+	|			|
+  lock + key			lock + key (must be checked before
+				 |		exiting house)
+			(FIXED on door)
+
+
+=====================================================================
+
+
+
+	Multithreading
+
+
+	thread = set of instructions
+
+
+	In a Bank
+
+		at the Cash Deposit Counter 
+
+bankDB
+101 Suresh 50,000 <-- bookMark Teller1 busy here
+102 Naresh 60,000
+103 Haresh 70,000  
+104 Jayesh 80,000  
+
+	Teller1			Teller2			Teller3
+	|			|			|
+	getBalance(101)		getBalance(102)		getBalance(103)
+	|			|			|
+	calcAmount		calcAmount		calcAmount
+	|			|			|
+	setBalance(101)		setBalance(102)		setBalance(103)
+	|			|			|
+	Customer1		Customer2		Customer3
+	|			|			|
+at 	10.00 am		10.00 am		10.00 am
+with	5000/- Rs 		8000/- Rs		7000/- Rs
+deno	100 rs notes(50)	200 rs notes(40)       500 rs notes(14)
+for	a/c 101			a/c 101			a/c 101
+		
 	
+
+   Object	java.lang."Runnable" interface
+	|		   | run(); 
+	|		   |
+	|extends	   |implements
+	------------------------------
+		|		    |
+class ->      Thread		   MyThread (Method B)
+		|		
+		| start() { } --> is the main logic
+		| 		that talks to JVM's
+		| run() { }	Thread Scheduler
+		|
+	-------------------
+	|extends		please see both A and B
+	MyThread (Method A)	pls reply in chat y/n
+	
+	Steps to multithreaded program
+	Method A : a. extend from Thread class
+	Method B : a. implement from Runnable interface
+
+
+
+
+Method A : 
+
+	a. extend from Thread class
+	b. override its run() method
+		write the logic to participate in threading
+	c. and call its start() method
+		which will invoke your run() method
+	
+	
+Method B :
+
+	a. implement from Runnable interface
+	b. implement the public void run()
+		write the logic to participate in threading
+
+	c. and now create object of 
+ 		java.lang.Thread class
+		-pass our Runnable's child object to 
+		 the constructor	of Thread class
+	d. call Thread's start() which will invoke
+		your Runnables run()
+	
+	
+	
+		
+
+  watch again 
+all are at once
+
+  are you there 
+
+
+	multithreaded frames
+	
+
+
+
+
+
+
+
+
+
+
+
+
+	Assignment to all of you.
+
+
+	1. Write a program as per the following terms
+
+		Producer <-- is a Thread
+		   run() <-- function
+
+		Consumer <-- is a Thread
+		   run() <-- function 
+
+		FoodItem
+			produce() <-- function
+			consume() <-- function
+
+	run() method of Producer will invoke FoodItem's produce()
+	run() method of Consumer will invoke FoodItem's consume();
+	on p1.start(), c1.start() it should invoke both the run's
+
+	Both the threads are working on a common object 
+
+		
+			FoodItem
+			   |
+			itemServed=false
+		------------------------------
+		|			   |
+		|->produce()	consume()<-|
+		|			   |
+Producer->run()-+		      run()+<-Consumer
+
+
+		if the Consumer's consume() finds that
+			the "itemServed" as "false"
+		means the Consumer has to wait()
+		for the Producer thread to complete
+		the produce()
+	
+
+		InterThread Communication (ITC)
+
+
+			Object
+			| 11 methods
+	------------------------------------------
+	|	|		|	|
+	String Throwable	Thread	..	..
+	
+all the hundreds/thousands of java child classes
+would inherit these 11 methods
+
+
+every java developer MUST be aware of these 11 method names
+and depending upon the usage too
+
+the methods are as below
+
+	1 equals()	to compare equality of objects
+	2 hashCode()	hex decimal representation of object
+
+	3 p String toString()	string representation of the object
+
+	4 clone()	copy an object
+
+	5 finalize()	used during garbage collection
+
+	6  wait()	thread waits for a lock to release 
+	7  wait(.)	thread waits for a lock to release 
+	8  wait(..)	thread waits for a lock to release 
+
+	9  notify()	notify that the lock is released
+	10 notifyAll()  notify all that the lock is released
+
+ 	11 getClass()	meta data of a class
+	
+
+
+
+
+
+		Thread priorities
+			|
+	---------------------------------------
+	|		|		|
+	MIN_PRIORITY	NORM_PRIORITY	MAX_PRIORITY
+	1		5		10
+			(default)
+
+
+
+
+
+
+
+
+
+
+
+	Generics and Collection
+	|		|
+	templates	bag
+
+
+
+	primitive	Object type
+		|	| (Wrapper classes)
+		int	Integer
+		byte	Byte
+		short	Short
+		long	Long
+	
+		float	Float
+		double	Double
+		char	Character
+
+		boolean	Boolean	
+
+
+	int x=10;	Integer  x = new Integer(10);
+
+
+
+	all are co-creator 
+
+
+Type->		FriedRice	Juice		Noodles	   PaneerChilly
+		\        /     |      |        (      )   \       /
+Container->	  Plate	       |Glass |		 Bowl	    Plate
+
+Iterator->	Spoon		|| Straw        \ |ChopStick  Fork|||
+                                                                   |
+Algorithm->	eat()		drink();	eat()	      eat();
+
+
+java.util.*	
+
+				Iterable
+				   |
+				Collection
+				   |
+			--------------------------
+			|			|
+		      List                    Set
+			|duplicates		|unique
+		-----------------	-----------------
+		|		|	|		|	
+Container->   ArrayList	  LinkedList	TreeSet	  HashSet
+		|		|	    |		|
+	 growable 	flexible for	 search		huge data 
+	 at the end	 DML 		 is faster	
+			(insert/update/
+			delete)
+	
+content	 Log		Contact		PeriodicTable	Books
+	  |		|		|		|	
+container Mobile	PhoneBook	Chemistry	Shelf
+
+
+
+
+
+
+java.io
+
+	File Handling
+	-----------------
+
+		file input and output 
+			|	|
+		   reading	writing
+
+
+	(stdin)				(stdout)
+	input				output	
+	|				|
+	Keyboard			Monitor	
+	|				|		(stdout)
+	------>-->-->--------->-->-->-------------- Printer output
+			|
+			Your Java
+			Program
+			|
+	------>------------------------->-+
+	|+-----<--------- -----------<--+ |
+	||		| |		| |
+	FILE		RAM		NETWORK
+	input(read)	(read)		(read)
+	output(write)	(write)		(write)
+
+
+	input means your java program is reading 
+	output means your java program is writing
+
+		
+======================================================================
+			java io
+======================================================================
+	byte based			character based
+	|				|
+	1 byte				1 char ( 2 bytes )
+	|				|
+	ASCII				UNICODE (ASCII + UNICODE )
+	|				|
+	256 letters			65535 letters
+======================================================================
+ InputStream   |OutputStream	||  Reader	|  Writer       |
+    read()     |   write()      ||   read()     |   write()     |
+----------------------------------------------------------------------
+FileInputStream|FileOutputStream||		|		|
+	       |		||		|		|
+	       |		||		|		|
+	       |		||		|		|
+-----------------------------------------------------------------------
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
