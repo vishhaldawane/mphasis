@@ -168,3 +168,198 @@ EMP->	   |10 CLERK		|7902 ANALYST	|7788 ANALYST
 EMP->				|20		|20
 EMP->				SMITH		ADAMS	
 				7369 CLERK	7876 CLERK
+
+
+
+
+		MARTIN 7654 - GOT ONE CUSTOMER - 
+		|			|
+	   SALESMAN		-> 102 VOLLYRITE - THIS CUSTOMER MUST HAVE SOME ORDERS
+					|
+			
+
+
+
+
+
+
+
+ KING HAS GOT IS BUSINESS OF SPORTS ACTIVITIES PRODUCTS
+
+
+	KING IS SELLING SUCH SPORT PRODUCTS
+	AND TO SELL THEM HE HAS APPOINTED SALESMEN
+
+
+	oracle data is case sensitive
+
+	query is not case sensitive
+
+
+
+
+
+
+
+		3-TIER ARCHITECTURE
+
+
+
+
+						empno,ename,job,salary
+ 1				data logic		|
+				| ORACLE -  TABLES - EMP TABLE
+		-----------------------------
+			|
+ 2			business logic
+			| JAVA	- CLASSES - Employee, 
+			|		 EmpController <-- spring and hibernate
+	---------------------------------
+	|
+ 3	presentation logic
+	|
+	BROWSER - UI SCREEN - ANGULAR
+				|
+				EmpComponent
+				|
+			these four columns -> empno,ename,job,salary
+
+
+
+
+	conversion functions
+
+
+
+
+ SELECT * FROM DEPT WHERE DEPTNO=30;
+ SELECT   EMPNO,ENAME,JOB,DEPTNO FROM EMP WHERE EMPNO=7654;
+ SELECT   CUSTID,NAME,REPID FROM CUSTOMER WHERE CUSTID=102;
+ SELECT * FROM ORD WHERE CUSTID=102;
+ SELECT * FROM ITEM WHERE ORDID=614;
+ SELECT * FROM PRODUCT WHERE PRODID IN (100860,100870,100871);
+
+
+
+
+
+	Nested queries
+
+
+	query within a query
+
+
+		Query1 ... ( Query2 .... ( Query 3 ....) ... )  ... 
+					 <------------->
+					   inner most
+			   <--------------------------------->
+					outer one
+		<-------------------------------------------------->
+				outer most
+
+
+
+
+
+
+	 SELECT CUSTID,NAME FROM CUSTOMER 
+
+	 WHERE REPID = 
+
+		(select EMPNO from emp 
+
+			where deptno = 
+
+			( select deptno from dept where LOC='CHICAGO' ) 
+
+		and job='SALESMAN' AND ENAME='MARTIN');
+
+	
+
+	SELECT * FROM ITEM 
+	WHERE ORDID IN 
+		(SELECT ORDID FROM ORD 
+		WHERE CUSTID = 
+			(SELECT CUSTID FROM CUSTOMER 
+			WHERE REPID = 
+				(select EMPNO from emp 
+				where deptno = 
+					( select deptno from dept 
+					where LOC='CHICAGO' ) 
+					and job='SALESMAN' AND ENAME='MARTIN') 
+		AND ORDID=614)
+		);
+
+
+
+
+	WRITE A QUERY TO IDENTIFY "CUSTOMER NAME" WHO HAS ORDERED "ACE TENNIS RACKET I"
+
+		SELECT NAME FROM CUSTOMER 
+		WHERE CUSTID IN 
+			(SELECT CUSTID FROM ORD 
+			WHERE ORDID IN 
+				(SELECT ORDID FROM ITEM 
+				WHERE PRODID = 
+					(SELECT PRODID FROM PRODUCT 
+						WHERE DESCRIP='ACE TENNIS RACKET I')));
+
+	SHOW CUSTOMER WHO HAS ORDERED TOTAL MORE THAN 20,000
+
+		SELECT CUSTID,NAME FROM CUSTOMER 
+		WHERE CUSTID IN 
+			(SELECT CUSTID FROM ORD 
+				WHERE TOTAL > 20000);
+
+
+
+	SHOW PRODUCTS ORDERED/SHIPPED ON 30-JUL-86
+
+		SELECT * FROM PRODUCT 
+		WHERE PRODID IN 
+			(SELECT PRODID FROM ITEM 
+			WHERE ORDID IN 
+				( SELECT ORDID FROM ORD 
+					WHERE SHIPDATE = '30-JUL-86'));
+
+
+
+	SHOW PRODUCTS WHERE QUANTITY IS MORE THAN 400
+		SELECT * FROM PRODUCT 
+		WHERE PRODID IN 
+			(SELECT PRODID FROM ITEM 
+			WHERE QTY>400);
+
+
+
+	SHOW CUSTOMER WHO HAS COMMISION PLAN IS 'A'
+
+		SELECT NAME FROM CUSTOMER 
+		WHERE CUSTID IN 
+			(SELECT CUSTID FROM ORD 
+			WHERE COMMPLAN='A');
+
+
+	SHOW ORDERS WHERE CUSTOMERS CREDITLIMIT IS MORE THAN 8000
+
+		SELECT * FROM ORD 
+		WHERE CUSTID IN 
+			(SELECT CUSTID FROM CUSTOMER 
+			WHERE CREDITLIMIT>8000);
+
+	
+
+	SHOW THE HIGHEST COST ORDERED FROM ORD TABLE
+
+
+
+
+
+
+
+
+
+
+	
+
+
