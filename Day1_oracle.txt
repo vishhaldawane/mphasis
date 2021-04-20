@@ -522,3 +522,551 @@ SELECT SUBJECT_ID,SUBJECT_NAME, AUTHOR_ID,AUTHOR_NAME FROM SUBJECT,AUTHOR
 		FROM EMP M, EMP W
 
 	        WHERE M.EMPNO = W.MGR;
+
+
+
+
+
+
+
+
+
+=================================================
+
+
+
+	KNOWLEDGE + VISION + ATTITUDE (LEARNING)
+
+below code is hibernate framewok code
+
+@Entity
+@Table(name="emp")
+Class Employee
+{
+	@Id
+	@Column(name="EMPNO")
+	private int employeeNumber;
+
+	
+	private String 	EMPNAME	;
+	private String DESG;
+	private double	SALARY;
+
+
+	@ManyToOne
+	private Dept d;
+	
+}
+
+
+
+
+
+
+
+
+	DDL
+
+		DATA DEFINITION LANGUAGE
+
+
+		create table - make a table
+
+		alter table - modify the table
+
+		drop table - removes the table along with entire data
+
+		truncate table - removes only the data - table structure remains
+
+
+
+		number		- integral ( 40 digits )
+
+		
+		number(9,2)	- float
+		number(12,5)	- float
+
+		char		- for holding characters
+		char(10)	- to hold 10 letters	- 'April' - still occupies 10 letters
+
+		varchar2(10)	- to hold max 10 letters - 'April' - will occupy 5 letters
+							    'May' - will occupy 3 letters
+
+
+		date		- to hold date - 'dd-Mon-yy' ie  '10-Jan-21'
+
+
+   DQL
+	select
+	nested query
+	joins
+	normalization
+
+		
+		create table employee
+		(
+		    empno number(4),
+		    ename varchar2(20),
+		    age   number(3),
+		    email varchar2(20),
+		    birthdate date,
+		    salary number(12,2)
+		);
+
+	insert into employee values (1234,'Jack',20,'jack@gmail.com','10-Jan-2000',5000);
+	insert into employee values (1235,'Jane',20,'jane@gmail.com','12-Feb-2000',6000);
+	insert into employee values (1234,'Jobby',21,'jobby@gmail.com','11-Mar-1999',4500);
+		    
+		   	
+	set linesize 120;
+
+	select * from employee;
+
+
+	we have to put some constraints/restrictions on the table's data
+
+	
+		1. integrity constraint
+
+			primary key
+
+				unique + not null
+
+
+		2. unique constraint
+
+				unique value ( can have null )
+
+		3. not null constraint
+
+				no null value allowed
+				value is mandatroy
+
+		4. check constraint
+
+				validate data against a check condition
+
+		5. referential integrity constraint
+
+				value inserted against a primary key
+
+
+		2021 -18 
+
+		create table employee1
+		(
+		    empno number(4)	primary key,
+		    ename varchar2(20)  not null,
+		    age   number(3)     check (age>=18),
+		    email varchar2(20)  unique,
+		    birthdate date      check (birthdate<'1-Jan-2003'),
+		    salary number(12,2) check (salary >= 5000)
+		);
+
+insert into employee1 values (1234,'Jane',21,'jane@gmail.com','10-Feb-2001',6500);
+insert into employee1 values (1234,'Jane',21,'jane@gmail.com','10-Feb-2001',6500);
+  - unique constraint (SYSTEM.SYS_C008835) violated - when duplicate emp number entered - PK
+
+insert into employee1 values (1234,'Jane',21,'jane@gmail.com','10-Feb-2001',4500)
+  - check constraint  (SYSTEM.SYS_C008834) violated - when salary was 4500
+
+insert into employee1 values (1235,'Jane',11,'jane@gmail.com','10-Feb-2001',6500);
+  - check constraint  (SYSTEM.SYS_C008832) violated - when age was as 11
+
+insert into employee1 values (1235,null,21,'jane@gmail.com','10-Feb-2001',6500);
+  - cannot insert NULL into ("SYSTEM"."EMPLOYEE1"."ENAME") - when name was null
+
+insert into employee1 values (1235,'Jane',21,'jane@gmail.com','10-Feb-2022',6500);
+  - check constraint  (SYSTEM.SYS_C008833) violated - birthdate as 10-Feb-2022
+
+insert into employee1 values (1235,'Jane',21,'jack@gmail.com','10-Feb-2001',5500);
+  - unique constraint (SYSTEM.SYS_C008836) violated
+		create table dept1
+		(
+		   deptno number primary key,
+                   dname  varchar2(20) not null,
+		   loc    varchar2(20) check ( loc in ('NY','ND','DALLAS','CHICAGO'))
+		);
+ INSERT INTO DEPT1 VALUES (10,'DEVELOPMENT','NY');
+ INSERT INTO DEPT1 VALUES (20,'TESTING','ND');
+ INSERT INTO DEPT1 VALUES (30,'QMS','DALLAS');
+ INSERT INTO DEPT1 VALUES (40,'DEPLOYMENT','CHICAGO');
+
+		create table employee2
+		(
+		    empno number(4)	primary key,
+		    ename varchar2(20)  not null,
+		    age   number(3)     check (age>=18),
+		    email varchar2(20)  unique,
+		    birthdate date      check (birthdate<'1-Jan-2003'),
+		    salary number(12,2) check (salary >= 5000),
+		    DEPTNUM NUMBER REFERENCES DEPT1 ( DEPTNO )
+		);
+insert into employee2 values (1234,'Jane',21,'jane@gmail.com','10-Feb-2001',6500,10);
+insert into employee2 values (1235,'Jack',21,'jack@gmail.com','11-Nov-2001',7500,15);
+  - integrity constraint (SYSTEM.SYS_C008846) violated - parent key not found
+
+		deptno 15 does not exist in dept1
+
+
+	DATA DICTIONARY - META DATA - ORACLE GENERATED CONSTRAINT NAMES
+
+    select constraint_name,constraint_type,search_condition
+    from user_constraints where table_name='EMPLOYEE1';
+						TABLE NUME MUST BE IN CAPITAL 
+
+	ONCE U HAVE DONE PLS CHAT
+
+
+		create table employee3
+		(
+		    empno number(4)     CONSTRAINT MY_EMP3_PK primary key,
+		    ename varchar2(20)  CONSTRAINT MY_EMP3_ENM_NN not null,
+		    age   number(3)     CONSTRAINT MY_EMP3_CHK_AGE    check (age>=18),
+		    email varchar2(20)  CONSTRAINT MY_EMP3_CHK_EMAIL  unique,
+		    birthdate date      CONSTRAINT MY_EMP3_CHK_BDATE  check (birthdate<'1-Jan-2003'),
+		    salary number(12,2) CONSTRAINT MY_EMP3_CHK_SAL    check (salary >= 5000),
+		    DEPTNUM NUMBER      CONSTRAINT MY_EMP3_CHK_DEPTNO REFERENCES DEPT1 ( DEPTNO )
+		);
+
+	insert into employee3 values (1234,'Jane',21,'jane@gmail.com','10-Feb-2001',6500,10);
+	1 row created.
+SQL> insert into employee3 values (1234,'Jane',21,'jane@gmail.com','10-Feb-2001',6500,10);
+	ORA-00001: unique constraint (SYSTEM.MY_EMP3_PK) violated
+SQL> insert into employee3 values (1235,NULL,21,'jane@gmail.com','10-Feb-2001',6500,10);
+	ORA-01400: cannot insert NULL into ("SYSTEM"."EMPLOYEE3"."ENAME")
+SQL> insert into employee3 values (1235,'Jack',11,'jane@gmail.com','10-Feb-2001',6500,10);
+	ORA-02290: check constraint (SYSTEM.MY_EMP3_CHK_AGE) violated
+SQL> insert into employee3 values (1235,'Jack',22,'jane@gmail.com','10-Feb-2001',6500,10);
+	ORA-00001: unique constraint (SYSTEM.MY_EMP3_CHK_EMAIL) violated
+SQL> insert into employee3 values (1235,'Jack',22,'jack@gmail.com','10-Feb-2022',6500,10);
+	ORA-02290: check constraint (SYSTEM.MY_EMP3_CHK_BDATE) violated
+SQL> insert into employee3 values (1235,'Jack',22,'jack@gmail.com','10-Feb-2002',1500,10);
+	ORA-02290: check constraint (SYSTEM.MY_EMP3_CHK_SAL) violated
+SQL> insert into employee3 values (1235,'Jack',22,'jack@gmail.com','10-Feb-2002',5500,18);
+	ORA-02291: integrity constraint (SYSTEM.MY_EMP3_CHK_DEPTNO) violated - parent key not found
+
+
+
+				Issue Contraints
+					|
+			----------------------------------------------
+			|				|
+		column level				table level
+
+		create table employee3
+		(
+		    empno number(4)     CONSTRAINT MY_EMP3_PK primary key, <- column level
+		    ename varchar2(20)  CONSTRAINT MY_EMP3_ENM_NN not null, <- column level
+		    age   number(3)     CONSTRAINT MY_EMP3_CHK_AGE    check (age>=18), <- column level
+		    email varchar2(20)  CONSTRAINT MY_EMP3_CHK_EMAIL  unique, <- column level
+		    birthdate date      CONSTRAINT MY_EMP3_CHK_BDATE  check (birthdate<'1-Jan-2003'), <- column level
+		    salary number(12,2) CONSTRAINT MY_EMP3_CHK_SAL    check (salary >= 5000), <- column level
+		    DEPTNUM NUMBER      CONSTRAINT MY_EMP3_CHK_DEPTNO REFERENCES DEPT1 ( DEPTNO ) <- column level
+		);
+
+
+
+		create table employee4
+		(
+		    empno number(4),     
+		    ename varchar2(20) CONSTRAINT MY_EMP4_ENM_NN not null,
+		    age   number(3),   
+		    email varchar2(20),
+		    birthdate date, 
+		    salary number(12,2),
+		    comm number(12,2),
+		    DEPTNUM NUMBER,
+		    CONSTRAINT MY_EMP4_PK primary key(empno), 
+		    CONSTRAINT MY_EMP4_CHK_AGE    check (age>=18), 
+		    CONSTRAINT MY_EMP4_CHK_EMAIL  unique(email), 
+		    CONSTRAINT MY_EMP4_CHK_BDATE  check (birthdate<'1-Jan-2003'), 
+		    CONSTRAINT MY_EMP4_CHK_SAL    check (salary >= 5000), 
+		    CONSTRAINT MY_EMP4_CHK_COMM   check (comm < salary ),
+		    CONSTRAINT MY_EMP4_CHK_DEPTNO FOREIGN KEY (DEPTNUM) REFERENCES DEPT1 ( DEPTNO ) 
+		);
+
+		NOT NULL CONSTRAINT CANNOT BE GIVEN AT TABLE LEVEL
+		IT HAS TO BE ISSUED ALONG WITH THE COLUMN DEFINITION
+	
+
+
+
+	TCL
+
+
+		Transaction control language
+
+
+			- commit - to update the database file on the harddrive
+
+			- rollback - undo the recent changes DONE AFTER LAST COMMIT
+
+
+		SQL> TABLE HAS 5 RECORDS
+
+		SQL> INSERTED ONE RECORD   ( NOW TABLE HAS 6 RECORDS)
+		SQL> UPDATED ONE RECORD	  ( OUT OF 6 ONE RECORD IS MODIFIED )
+		SQL> DELETED TWO RECORDS   ( OUT OF 6 TWO ARE DELETED, HENCE 4 ROWS REMAIN )
+
+		SQL> COMMIT;  ( THIS WILL COMFIRM ALL THE ABOVE CHANGES )
+
+		SQL> INSERTED 5 RECORDS ( NOW IT HAS TOTAL 9 RECORDS )
+		SQL> DELETED 2 RECORD ( NOW IT HAS 7 RECORDS )
+
+		SQL> ROLLBACK 
+
+DML - DATA MANIPULATION
+
+		UPDATE DEPT1   SET   DNAME='SALES', LOC='NY' WHERE DEPTNO=50;
+
+		DELETE FROM DEPT1 WHERE DEPTNO=30;
+
+
+		
+	DCL
+
+		DATA CONTROL LANGUAGE
+
+	select name,open_mode  from v$pdbs;
+	alter session set container=pdb1;
+	alter pluggable database pdb1 open;
+
+
+
+
+			USERNAME		PASSWORD
+			     |			    |		    
+SYSTEM	SQL>	CREATE USER JACKIE IDENTIFIED BY DIAMOND
+SYSTEM	SQL>	GRANT ALL PRIVILEGES TO JACKIE
+
+
+SYSTEM	SQL> CONNECT JACKIE/DIAMOND
+
+JACKIE	SQL> CREATE TABLE EMP ( EMPNO NUMBER ); 
+JACKIE	SQL>  INSERT INTO EMP VALUES (10);
+	      INSERT INTO EMP VALUES (20);
+              INSERT INTO EMP VALUES (30);
+
+JACKIE	SQL>  SELECT * FROM EMP;
+
+JACKIE  SQL> CONN /AS SYSDBA
+
+SYSDBA  SQL> REVOKE ALL PRIVILEGES FROM JACKIE;
+
+SYSDBA  SQL> CONNECT JACKIE/DIAMOND
+
+
+
+
+
+	DCL - data control language
+
+	SQL> conn /as sysdba
+	SQL> alter session set "_ORACLE_SCRIPT"=true;
+
+	SQL> create user jack3 identified by tiger3;
+	SQL> grant all privileges to jack3;
+
+
+	SQL> connect jack3/tiger3
+jack3	SQL> create table emp ( empno number );
+	SQL> insert ....
+	
+	SQL> connect /as sysdba
+sysdba	SQL> revoke all privileges from jack3;
+
+	SQL> connect jack3/tiger3
+
+	
+		
+
+	set operators	
+	-------------------
+
+		union
+		A	select rownum, empno,ename,job,sal,deptno from emp where rownum<=5
+		<	union
+		B	select rownum, empno,ename,job,sal,deptno from emp where rownum<=7;
+
+		union all
+		A	select rownum, empno,ename,job,sal,deptno from emp where rownum<=5
+		+	union all
+		B	select rownum, empno,ename,job,sal,deptno from emp where rownum<=7;
+
+		intersect
+			select rownum, empno,ename,job,sal,deptno from emp where rownum<=5
+			intersect
+			select rownum, empno,ename,job,sal,deptno from emp where rownum<=7;
+
+		minus
+			select rownum, empno,ename,job,sal,deptno from emp where rownum<=7
+			minus
+			select rownum, empno,ename,job,sal,deptno from emp where rownum<=5;
+
+			
+
+
+	PL- SQL
+
+
+		Procedural Language - for SQL
+
+
+		Sequential code
+			- series of lines
+
+		Selective code
+			- if condition
+
+		Iterative code
+			- loop
+
+
+
+
+		declare <-- optional
+
+			 some variables are declared here
+
+		begin
+			pl sql block to run
+
+		end;
+
+
+
+		SQL> set serveroutput on
+
+
+
+	Annonymous block <--- the block that does not have a name - nameless
+
+		SQL> begin
+			 dbms_output.put_line('Welcome to the world of PL SQL');
+			 dbms_output.put_line('its more simple....');
+
+		end; <-- semicolon here
+		/    <-- to run it
+
+		
+
+
+   declare
+        a number:=100;
+        b varchar2(20):='New York';
+        c char(1):='Y';
+        d date:='10-Mar-2022';
+        e number(9,2):=9000.12;
+    begin
+        dbms_output.put_line('value of a ' || a);
+        dbms_output.put_line('value of b ' || b);
+        dbms_output.put_line('value of c ' || c);
+        dbms_output.put_line('value of d ' || d);
+        dbms_output.put_line('value of e ' || e);
+    end;
+   /
+	
+	WE CANNOT WRITE SQL'S SELECT QUERY IN PL/SQL BLOCK
+			
+------------------------------------------------
+        declare
+                mydeptno number;
+                mydeptName varchar2(9);
+                mydeptLoc  varchar2(10);
+        begin
+                select DEPTNO,DNAME,LOC INTO MYDEPTNO,MYDEPTNAME,MYDEPTLOC from dept	
+		WHERE DEPTNO=&NUM;
+
+                dbms_output.put_line('dept number   : ' || mydeptno);
+                dbms_output.put_line('dept name     : ' || mydeptname);
+                dbms_output.put_line('dept location : ' || mydeptLoc);
+        end;
+
+
+------------------------------------------------
+
+  	declare
+                mydeptno   DEPT.DEPTNO%TYPE;
+                mydeptName DEPT.DNAME%TYPE;
+                mydeptLoc  DEPT.LOC%TYPE;
+        begin
+                select DEPTNO,DNAME,LOC INTO MYDEPTNO,MYDEPTNAME,MYDEPTLOC from dept	
+		WHERE DEPTNO=&NUM;
+
+                dbms_output.put_line('dept number   : ' || mydeptno);
+                dbms_output.put_line('dept name     : ' || mydeptname);
+                dbms_output.put_line('dept location : ' || mydeptLoc);
+        end;
+
+------------------------------------------------
+
+	declare
+                mydeptno   DEPT.DEPTNO%TYPE;
+                mydeptName DEPT.DNAME%TYPE;
+                mydeptLoc  DEPT.LOC%TYPE;
+        begin
+                select * INTO MYDEPTNO,MYDEPTNAME,MYDEPTLOC from dept	
+		WHERE DEPTNO=&NUM;
+
+                dbms_output.put_line('dept number   : ' || mydeptno);
+                dbms_output.put_line('dept name     : ' || mydeptname);
+                dbms_output.put_line('dept location : ' || mydeptLoc);
+        end;
+	
+------------------------------------------------
+		
+	declare
+		TYPE MYDEPT IS RECORD
+		(
+	                mydeptno   DEPT.DEPTNO%TYPE, -- %TYPE MEANS INDIVIDUAL COLUMN
+        	        mydeptName DEPT.DNAME%TYPE,
+                	mydeptLoc  DEPT.LOC%TYPE
+		);
+		
+		D MYDEPT; -- HERE D IS THE VARIABLE OF DATA TYPE MYDEPT
+		
+        begin
+                select * INTO D from dept WHERE DEPTNO=&NUM;
+
+                dbms_output.put_line('dept number   : ' || D.mydeptno);
+                dbms_output.put_line('dept name     : ' || D.mydeptname);
+                dbms_output.put_line('dept location : ' || D.mydeptLoc);
+        end;
+
+----------------------------------------------------------
+
+        declare
+		   	
+		D DEPT%ROWTYPE; -- %ROWTYPE MEANS CONSIDER ALL COLUMNS AND THEIR TYPES
+		
+        begin
+                select * INTO D from dept WHERE DEPTNO=&NUM;
+
+                dbms_output.put_line('dept number   : ' || D.DEPTNO);
+                dbms_output.put_line('dept name     : ' || D.DNAME);
+                dbms_output.put_line('dept location : ' || D.LOC);
+        end;
+
+----------------------------------------------------------------------
+
+        declare
+		TYPE MyDeptEmpCustomer IS RECORD
+		(
+        	        myDeptName DEPT.DNAME%TYPE,
+        	        myEmpName  EMP.ENAME%TYPE,
+        	        myCustName CUSTOMER.NAME%TYPE
+		);
+		
+		dec MyDeptEmpCustomer ; -- HERE D IS THE VARIABLE OF composite type
+		
+        begin
+                select dname,ename,name INTO dec from dept,emp,customer
+		WHERE dept.deptno=emp.deptno and emp.empno=customer.repid
+		and emp.empno=7654;
+
+                dbms_output.put_line('DEPT NAME     : ' || dec.myDeptName);
+                dbms_output.put_line('EMP  NAME     : ' || dec.myEMPNAME);
+                dbms_output.put_line('CUSTOMER NAME : ' || DEC.myCustNAME);
+        end;
+-----------------------------------------------------------------------------
