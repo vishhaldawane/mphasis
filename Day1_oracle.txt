@@ -1070,3 +1070,558 @@ sysdba	SQL> revoke all privileges from jack3;
                 dbms_output.put_line('CUSTOMER NAME : ' || DEC.myCustNAME);
         end;
 -----------------------------------------------------------------------------
+
+
+	declare
+		age number;
+	begin
+		age:=&temp;
+		dbms_output.put_line('age is : '||age);
+		
+		if (age>=18) 
+		then
+			dbms_output.put_line('You can VOTE');
+		else
+			dbms_output.put_line('You CANNOT VOTE');
+		end if;
+	end;
+
+--------------------------------------------------------------------
+
+	declare
+		num number;
+	begin
+		num:=&temp;
+		dbms_output.put_line('num is : '||num);
+		
+		if (num>10) 
+		then
+			dbms_output.put_line(num||' is higher than 10');
+		else
+			if(num<10)
+			then
+				dbms_output.put_line(num||' is lesser than 10');
+			else
+				dbms_output.put_line(num||' is equals to 10');
+			end if;
+		end if;
+	end;
+
+--------------------------------------------------------------------
+	
+	declare
+		x number:=1;
+	begin
+		dbms_output.put_line('Begin');
+		while (x<=10)
+		loop
+		  dbms_output.put_line('x : '||x);
+		  x:=x+1;
+		end loop;
+		dbms_output.put_line('End');
+	end;
+	
+
+	Assignment : make a table of 1 to 10 : hint : nested loop
+
+	declare
+		x number:=1;
+		y number:=1;
+	begin
+		dbms_output.put_line('Begin');
+
+		while (x<=10)
+		loop
+			y:=1;
+			while(y<=10)
+			loop
+				dbms_output.put(' '||x*y);
+				y:=y+1;
+			end loop;
+			dbms_output.put_line('');
+			dbms_output.put_line('-------------------------------');
+		  x:=x+1;
+		end loop;
+		dbms_output.put_line('End');
+	end;
+	
+-----------------------------------------------------------------
+
+
+	CURSOR
+	----------
+
+
+		CURSOR = IS A POINTER TO THE ACTIVE DATA SET
+
+
+				CURSOR
+				|
+			------------------
+			|		|
+			IMPLICIT	EXPLICIT
+			|		|
+			SQL		USER DEFINED NAME
+
+
+			CURSOR HAS ATTRIBUTES
+					|
+			----------------------------------
+			|	|	|	|
+		    ISOPEN   FOUND   NOTFOUND  ROWCOUNT
+
+ DECLARE
+       X NUMBER;
+    BEGIN
+       DBMS_OUTPUT.PUT_LINE('DELETE RECORDS PROGRAM');
+       X:=&NUM;
+       delete from emp where deptno=x;
+       if (SQL%found) then
+           DBMS_OUTPUT.PUT_LINE('Records deleted : '||sql%rowcount);
+       else
+          DBMS_OUTPUT.PUT_LINE('Records not found');
+      end if;
+   end;
+   /
+
+
+  DECLARE
+
+       DNO NUMBER;
+       SALPER NUMBER;
+
+    BEGIN
+
+       DBMS_OUTPUT.PUT_LINE('UPDATE RECORDS PROGRAM');
+
+       DNO:=&DEPTNUMBER;
+       SALPER:=&SALARYPERCENTAGE;
+
+       UPDATE EMP SET SAL=SAL+SAL*SALPER where deptno=DNO;
+       COMMIT; -- IF YOU WANT THE DATA TO BE CHANGED IN THE DBFILE
+
+       if (SQL%found) then
+           DBMS_OUTPUT.PUT_LINE('Records UPDATED : '||sql%rowcount);
+       else
+          DBMS_OUTPUT.PUT_LINE('Records not found');
+       end if;
+
+   end;
+   /
+
+-------------------------------------------------------
+
+       DECLARE
+         CURSOR MYDEPTCUR IS SELECT * FROM DEPT; -- declare cursor
+         DEPTREC DEPT%ROWTYPE; 
+       BEGIN
+         DBMS_OUTPUT.PUT_LINE('BEGIN');
+         DBMS_OUTPUT.PUT_LINE('OPENING CURSOR');
+         OPEN MYDEPTCUR; -- now its pointing to the active data set
+
+         FETCH MYDEPTCUR INTO DEPTREC; -- fetch first record
+            WHILE(MYDEPTCUR%FOUND) -- test if it is found
+            LOOP
+                DBMS_OUTPUT.PUT_LINE('ROW    : '||MYDEPTCUR%ROWCOUNT);
+                DBMS_OUTPUT.PUT_LINE('DEPTNO : '||DEPTREC.DEPTNO);
+                DBMS_OUTPUT.PUT_LINE('DNAME  : '||DEPTREC.DNAME);
+                DBMS_OUTPUT.PUT_LINE('LOC    : '||DEPTREC.LOC);
+                DBMS_OUTPUT.PUT_LINE('--------------------------');
+                FETCH MYDEPTCUR INTO DEPTREC; -- fetch successive records
+            END LOOP;
+         DBMS_OUTPUT.PUT_LINE('CLOSING CURSOR..');
+	 CLOSE MYDEPTCUR; -- close the active data set
+         DBMS_OUTPUT.PUT_LINE('CURSOR CLOSED....');
+        DBMS_OUTPUT.PUT_LINE('END');
+       END;
+
+----------------------------------------------------------	
+
+     DECLARE
+         CURSOR MYEMPCUR IS SELECT * FROM EMP WHERE JOB='&VJOB'; -- declare cursor
+         EMPREC EMP%ROWTYPE; 
+       BEGIN
+         DBMS_OUTPUT.PUT_LINE('BEGIN');
+         DBMS_OUTPUT.PUT_LINE('OPENING CURSOR');
+         OPEN MYEMPCUR; -- now its pointing to the active data set
+
+         FETCH MYEMPCUR INTO EMPREC; -- fetch first record
+            WHILE(MYEMPCUR%FOUND) -- test if it is found
+            LOOP
+                DBMS_OUTPUT.PUT_LINE('ROW    : '||MYEMPCUR%ROWCOUNT);
+                DBMS_OUTPUT.PUT_LINE('EMPNO : '||EMPREC.EMPNO);
+                DBMS_OUTPUT.PUT_LINE('ENAME : '||EMPREC.ENAME);
+                DBMS_OUTPUT.PUT_LINE('JOB   : '||EMPREC.JOB);
+                DBMS_OUTPUT.PUT_LINE('--------------------------');
+                FETCH MYEMPCUR INTO EMPREC; -- fetch successive records
+            END LOOP;
+         DBMS_OUTPUT.PUT_LINE('CLOSING CURSOR..');
+	 CLOSE MYEMPCUR; -- close the active data set
+         DBMS_OUTPUT.PUT_LINE('CURSOR CLOSED....');
+        DBMS_OUTPUT.PUT_LINE('END');
+       END;
+
+---------------------------------------------------------------------
+
+DECLARE
+         CURSOR MYDEPTCUR IS SELECT * FROM DEPT; -- declare cursor
+         DEPTREC DEPT%ROWTYPE; 
+       BEGIN
+         DBMS_OUTPUT.PUT_LINE('BEGIN');
+         DBMS_OUTPUT.PUT_LINE('OPENING CURSOR');
+         OPEN MYDEPTCUR; -- now its pointing to the active data set
+
+         FETCH MYDEPTCUR INTO DEPTREC; -- fetch first record
+            WHILE(MYDEPTCUR%FOUND) -- test if it is found
+            LOOP
+                DBMS_OUTPUT.PUT_LINE('ROW    : '||MYDEPTCUR%ROWCOUNT);
+                DBMS_OUTPUT.PUT_LINE('DEPTNO : '||DEPTREC.DEPTNO);
+                DBMS_OUTPUT.PUT_LINE('DNAME  : '||DEPTREC.DNAME);
+                DBMS_OUTPUT.PUT_LINE('LOC    : '||DEPTREC.LOC);
+                DBMS_OUTPUT.PUT_LINE('--------------------------');
+                FETCH MYDEPTCUR INTO DEPTREC; -- fetch successive records
+            END LOOP;
+         DBMS_OUTPUT.PUT_LINE('CLOSING CURSOR..');
+	 CLOSE MYDEPTCUR; -- close the active data set
+         DBMS_OUTPUT.PUT_LINE('CURSOR CLOSED....');
+
+         DBMS_OUTPUT.PUT_LINE('FETCHING THE RECORDS...AGAIN....');
+
+         OPEN MYDEPTCUR; --reopen the cursor 
+
+	   FETCH MYDEPTCUR INTO DEPTREC; -- fetch first record
+            WHILE(MYDEPTCUR%FOUND) -- test if it is found
+            LOOP
+                DBMS_OUTPUT.PUT_LINE('ROW    : '||MYDEPTCUR%ROWCOUNT);
+                DBMS_OUTPUT.PUT_LINE('DEPTNO : '||DEPTREC.DEPTNO);
+                DBMS_OUTPUT.PUT_LINE('DNAME  : '||DEPTREC.DNAME);
+                DBMS_OUTPUT.PUT_LINE('LOC    : '||DEPTREC.LOC);
+                DBMS_OUTPUT.PUT_LINE('--------------------------');
+                FETCH MYDEPTCUR INTO DEPTREC; -- fetch successive records
+            END LOOP;
+        close mydeptcur;
+        DBMS_OUTPUT.PUT_LINE('closed the cursor...');
+        
+        DBMS_OUTPUT.PUT_LINE('END');
+       END;
+
+--------------------------------------------------------------------
+
+
+
+
+        begin
+            for x in 1..10
+            loop
+                DBMS_OUTPUT.PUT_LINE('x '||x);
+            end loop;
+        end;
+
+--------------------------------------------------------------------
+
+        begin
+	    for x in reverse 1..10
+            loop
+                DBMS_OUTPUT.PUT_LINE('x '||x);
+            end loop;
+        end;
+
+------------------------------------------------------------------------
+DECLARE
+         CURSOR MY_DEPT_EMP_CUST_CUR IS SELECT dept.deptno,dname,loc, empno,ename,job,
+                custid,name,city FROM DEPT,emp,customer where dept.deptno = emp.deptno 
+                and emp.empno=customer.repid order by emp.empno; -- declare cursor
+         decRec MY_DEPT_EMP_CUST_CUR%ROWTYPE; -- declare cursor type variable
+       BEGIN
+         DBMS_OUTPUT.PUT_LINE('BEGIN'); DBMS_OUTPUT.PUT_LINE('OPENING CURSOR');
+         OPEN MY_DEPT_EMP_CUST_CUR; -- now its pointing to the active data set
+         FETCH MY_DEPT_EMP_CUST_CUR INTO decRec; -- fetch first record
+           WHILE(MY_DEPT_EMP_CUST_CUR%FOUND) -- test if it is found
+            LOOP
+                DBMS_OUTPUT.PUT_LINE('ROW      : '||MY_DEPT_EMP_CUST_CUR%ROWCOUNT);
+                DBMS_OUTPUT.PUT_LINE('DEPTNO   : '||decRec.DEPTNO); DBMS_OUTPUT.PUT_LINE('DNAME    : '||decRec.DNAME);
+                DBMS_OUTPUT.PUT_LINE('LOC      : '||decRec.LOC);
+                DBMS_OUTPUT.PUT_LINE('---------------------------');
+                DBMS_OUTPUT.PUT_LINE('EMPNO    : '||decRec.EMPNO); DBMS_OUTPUT.PUT_LINE('ENAME    : '||decRec.ENAME);
+                DBMS_OUTPUT.PUT_LINE('JOB      : '||decRec.JOB);
+                DBMS_OUTPUT.PUT_LINE('---------------------------');
+                DBMS_OUTPUT.PUT_LINE('CUSTID   : '||decRec.CUSTID); DBMS_OUTPUT.PUT_LINE('CUSTNAME : '||decRec.NAME);
+                DBMS_OUTPUT.PUT_LINE('CITY     : '||decRec.city);
+                DBMS_OUTPUT.PUT_LINE('=====================================');
+                FETCH MY_DEPT_EMP_CUST_CUR INTO decRec; -- fetch successive records
+            END LOOP;
+         DBMS_OUTPUT.PUT_LINE('CLOSING CURSOR..'); CLOSE MY_DEPT_EMP_CUST_CUR; -- close the active data set
+         DBMS_OUTPUT.PUT_LINE('CURSOR CLOSED....');
+        DBMS_OUTPUT.PUT_LINE('END');
+       END;  	
+
+-------------------------------------------------------------------
+
+DECLARE
+         CURSOR MY_DEPT_EMP_CUST_CUR IS SELECT dept.deptno,dname,loc, empno,ename,job,
+                custid,name,city FROM DEPT,emp,customer where dept.deptno = emp.deptno 
+                and emp.empno=customer.repid order by emp.empno; -- declare cursor
+
+		-- no need of cursor type variable, for loop will take care of it
+
+         BEGIN
+         DBMS_OUTPUT.PUT_LINE('BEGIN'); DBMS_OUTPUT.PUT_LINE('OPENING CURSOR');
+
+  	    -- no need to open the cursor
+
+	    for decRec in MY_DEPT_EMP_CUST_CUR	 -- known as cursor for loop     
+            LOOP
+		-- no need to fetch the value, for loop will take care
+                DBMS_OUTPUT.PUT_LINE('ROW      : '||MY_DEPT_EMP_CUST_CUR%ROWCOUNT);
+                DBMS_OUTPUT.PUT_LINE('DEPTNO   : '||decRec.DEPTNO); DBMS_OUTPUT.PUT_LINE('DNAME    : '||decRec.DNAME);
+                DBMS_OUTPUT.PUT_LINE('LOC      : '||decRec.LOC);
+                DBMS_OUTPUT.PUT_LINE('---------------------------');
+                DBMS_OUTPUT.PUT_LINE('EMPNO    : '||decRec.EMPNO); DBMS_OUTPUT.PUT_LINE('ENAME    : '||decRec.ENAME);
+                DBMS_OUTPUT.PUT_LINE('JOB      : '||decRec.JOB);
+                DBMS_OUTPUT.PUT_LINE('---------------------------');
+                DBMS_OUTPUT.PUT_LINE('CUSTID   : '||decRec.CUSTID); DBMS_OUTPUT.PUT_LINE('CUSTNAME : '||decRec.NAME);
+                DBMS_OUTPUT.PUT_LINE('CITY     : '||decRec.city);
+                DBMS_OUTPUT.PUT_LINE('=====================================');
+            END LOOP;
+
+                DBMS_OUTPUT.PUT_LINE('===== Printing Again ===='); -- no need of open,fetch and close
+
+	    for decRec in MY_DEPT_EMP_CUST_CUR	 -- known as cursor for loop     
+            LOOP
+		-- no need to fetch the value, for loop will take care
+                DBMS_OUTPUT.PUT_LINE('ROW      : '||MY_DEPT_EMP_CUST_CUR%ROWCOUNT);
+                DBMS_OUTPUT.PUT_LINE('DEPTNO   : '||decRec.DEPTNO); DBMS_OUTPUT.PUT_LINE('DNAME    : '||decRec.DNAME);
+                DBMS_OUTPUT.PUT_LINE('LOC      : '||decRec.LOC);
+                DBMS_OUTPUT.PUT_LINE('---------------------------');
+                DBMS_OUTPUT.PUT_LINE('EMPNO    : '||decRec.EMPNO); DBMS_OUTPUT.PUT_LINE('ENAME    : '||decRec.ENAME);
+                DBMS_OUTPUT.PUT_LINE('JOB      : '||decRec.JOB);
+                DBMS_OUTPUT.PUT_LINE('---------------------------');
+                DBMS_OUTPUT.PUT_LINE('CUSTID   : '||decRec.CUSTID); DBMS_OUTPUT.PUT_LINE('CUSTNAME : '||decRec.NAME);
+                DBMS_OUTPUT.PUT_LINE('CITY     : '||decRec.city);
+                DBMS_OUTPUT.PUT_LINE('=====================================');
+            END LOOP;
+
+        DBMS_OUTPUT.PUT_LINE('END'); -- no need to close the cursor, for loop will take care
+       END;  
+
+----------------------------------------------------------	
+
+
+  Parameterized Cursor
+  ------------------------
+
+
+     DECLARE
+         CURSOR MYEMPCUR(p_job varchar2, p_dno number) IS SELECT * FROM EMP WHERE 
+						       JOB=p_job and DEPTNO=p_dno;
+         EMPREC EMP%ROWTYPE; 
+
+         v_job varchar2(20):='&EnterJob';  v_dno NUMBER:=&EnterDeptno; 
+       BEGIN
+         DBMS_OUTPUT.PUT_LINE('BEGIN');   DBMS_OUTPUT.PUT_LINE('OPENING CURSOR');
+
+         OPEN MYEMPCUR(v_job,v_dno); -- SALESMAN, 30 IS PASSED DURING OPENING IT
+
+         FETCH MYEMPCUR INTO EMPREC; -- fetch first record
+            WHILE(MYEMPCUR%FOUND) -- test if it is found
+            LOOP
+                DBMS_OUTPUT.PUT_LINE('ROW    : '||MYEMPCUR%ROWCOUNT);
+                DBMS_OUTPUT.PUT_LINE('EMPNO : '||EMPREC.EMPNO);
+                DBMS_OUTPUT.PUT_LINE('ENAME : '||EMPREC.ENAME);
+                DBMS_OUTPUT.PUT_LINE('JOB   : '||EMPREC.JOB);
+                DBMS_OUTPUT.PUT_LINE('--------------------------');
+                FETCH MYEMPCUR INTO EMPREC; -- fetch successive records
+            END LOOP;
+         DBMS_OUTPUT.PUT_LINE('CLOSING CURSOR..');
+	 CLOSE MYEMPCUR; -- close the active data set
+         DBMS_OUTPUT.PUT_LINE('CURSOR CLOSED....');
+        DBMS_OUTPUT.PUT_LINE('END');
+       END;
+	
+=========================================================================
+
+
+
+
+
+	
+	Exception handling
+
+	----------------------
+
+			handling run time errors
+
+
+
+		declare
+
+		begin
+
+
+			exception 
+				.......
+				.......
+				.......
+		end;
+
+
+
+		declare
+			x number(3);
+			y number(3);
+			z number;
+		begin
+			DBMS_OUTPUT.PUT_LINE('Begin main');
+			x:=&num1;
+			DBMS_OUTPUT.PUT_LINE('x : '||x);
+
+			y:=&num2;
+			DBMS_OUTPUT.PUT_LINE('y : '||y);
+
+			z:=x/y;
+			DBMS_OUTPUT.PUT_LINE('z : '||z);
+
+			DBMS_OUTPUT.PUT_LINE('end main');
+
+			exception 
+				when ZERO_DIVIDE then
+					DBMS_OUTPUT.PUT_LINE('Cannot divide by zero');
+				when value_ERROR then
+					DBMS_OUTPUT.PUT_LINE('Please supply 3 digit number');
+		end;
+
+
+
+
+	----------------------------------------------------------
+
+                declare
+                     outer_x number:=100;
+                begin
+                                dbms_output.put_line('outer block ...begin');
+                                dbms_output.put_line('outer_x : ' || outer_x);
+
+                                declare
+                                    inner_x number:=200;
+				begin
+                                     dbms_output.put_line('inner block...begin');
+                                     dbms_output.put_line('outer_x : ' || outer_x);
+                                     dbms_output.put_line('inner_x : ' || inner_x);
+                                     dbms_output.put_line('inner block...end');
+                                end;
+                     dbms_output.put_line('outer block ...end');		
+                end;
+
+
+-----------------------------------------------
+
+	begin
+		declare
+			x number(3):=&num1;  -- enter 1000 here 
+			y number(3):=&num2;	z number;
+		begin
+			DBMS_OUTPUT.PUT_LINE('Begin main');
+
+			DBMS_OUTPUT.PUT_LINE('x : '||x);
+			DBMS_OUTPUT.PUT_LINE('y : '||y);
+
+			z:=x/y;
+			DBMS_OUTPUT.PUT_LINE('z : '||z);
+
+			DBMS_OUTPUT.PUT_LINE('end main');
+
+			exception 
+				when ZERO_DIVIDE then
+					DBMS_OUTPUT.PUT_LINE('Cannot divide by zero');
+				when value_ERROR then
+					DBMS_OUTPUT.PUT_LINE('Please supply 3 digit number');
+		end;
+
+		exception -- outer block excpetion here
+			when value_ERROR then
+				DBMS_OUTPUT.PUT_LINE('OuterBLock : Please supply 3 digit number');
+	end; -- outer block
+
+
+-----------------------------------------------------------------------------
+
+
+	User defined exception 
+
+delete from dept where deptno=10;
+
+	ORA-02292: integrity constraint (SYSTEM.EMP_FOREIGN_KEY) violated - 
+	child record found  ( means there are employees in emp (child) table for deptno=10) 
+
+insert into emp values (1111,'Jack','CLERK',7839,'12-Dec-20',4000,300,15)
+
+	ORA-02291: integrity constraint (SYSTEM.EMP_FOREIGN_KEY) violated - 
+	parent key not found - means there is no such deptno as 15 in dept(parent) table
+
+
+	2292  - child record found - "Employee exists...can not delete!!!"
+
+	2291  - parent key not found - "Department Not found - cannot insert!!!"
+
+	what if we try to change the salary of the 
+	employees more than their manager's salary??? it should throw exception
+
+
+
+
+	declare
+		new_sal number;		boss_salary number;
+		worker_eno number;	worker_sal number;
+
+		check_sal EXCEPTION; -- making a variable of the type Exception
+	begin
+		worker_eno:=&EnterEmpNumber;
+		new_sal:=&EnterNewSalary;
+
+		select boss.sal, worker.sal INTO boss_salary,worker_sal 
+		from emp boss, emp worker 
+		where boss.empno = worker.mgr and worker.empno = worker_eno;
+
+		if(new_sal > boss_salary) then
+			raise check_sal;  -- raise(throw) the exception
+		else
+			update emp set sal=new_sal where empno=worker_eno;
+			dbms_output.put_line('Worker''s salary updated as : '||new_sal);
+		end if;
+
+		exception 
+			when check_sal then
+				dbms_output.put_line('Worker''s salary cannot be more than their 
+				manager''s salary');
+			when others then -- master handler for any other exception
+				dbms_output.put_line('some problem');
+	end;
+
+
+
+
+
+
+below example is associating -2292 ( child record found ) with user defined exception, i.e.,
+								emp_found_exception  
+
+	declare
+	     emp_found_exception  EXCEPTION;
+	     pragma exception_init(emp_found_exception, -2292); -- this error is associated now
+        begin
+             dbms_output.put_line('Trying to delete department number');
+             delete from dept where deptno=&EnterDeptNumber; -- it will raise emp_found_exception
+	     if(sql%found) then
+	             dbms_output.put_line('Deleted department number');
+	     else
+		     dbms_output.put_line('Record NOT found : ');
+	     end if;
+	     exception 
+		when  emp_found_exception then
+                dbms_output.put_line('Cannot delete, employee found in emp table');
+        end;
+
+
+	
+
+
