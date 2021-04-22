@@ -1780,6 +1780,18 @@ SQL> select text from user_source where name='GREET'; // GREET must be in capita
 		
   create or replace package body myemp
   is
+    -- below function is a private function of this package body - it can be used inside package body
+    function findEmp(eno number) return number -- this function is not declared inside package
+    as
+      v_ename varchar2(20);
+    begin
+      select ename into v_ename from emp where empno=eno;
+      return 1;
+
+     exception when no_data_found then
+            return 0;
+   end;
+    
     function calc_sal(eno number) return number
     as
       total_sal number;
@@ -1793,7 +1805,10 @@ SQL> select text from user_source where name='GREET'; // GREET must be in capita
     function calc_bonus(eno number) return number
      as
       total_bonus number;
+      x number;
     begin
+      x:=findEmp(eno); -- internally called by the package body here
+      dbms_output.put_line('Employee found : '||x);
       select sal+sal*0.20 into total_bonus from emp where empno=eno;
       return total_bonus; -- return is mandatory, since its a function
       exception when no_data_found then
@@ -1823,13 +1838,24 @@ SQL> select text from user_source where name='GREET'; // GREET must be in capita
                dbms_output.put_line('some problem');
     end; -- end of the procedure
 
+   
+
  end;  -- end of the package body
 
 
 
 
 
+  create or replace function findEmp(eno number) return number
+    as
+      v_ename varchar2(20);
+    begin
+      select ename into v_ename from emp where empno=eno;
+      return 1;
 
+     exception when no_data_found then
+            return 0;
+   end;
 
 
 
