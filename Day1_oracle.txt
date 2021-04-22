@@ -1859,4 +1859,85 @@ SQL> select text from user_source where name='GREET'; // GREET must be in capita
 
 
 
+	Trigger
+
+		it is a stored block "invoked automatically" based on DML event
+
+		DML ( insert / update / delete )
+
+
+		triggerring events are 
+
+			before insert	
+			after insert
+
+			before update
+			after  update
+
+			before delete
+			after delete
+
+
+		if some one want to DML record on Saturday Sunday or 
+		on week days before 9:00 and after 18:00 office timing
+		how do we keep track of such DML event and prevent it???
+
+
+		trigger type
+
+			statement level 	OR 	Row level
+			|				|
+			after update 			for each row
+			(run once per statement)	(runs based on the number of rows affected)		
+						
+	SQL>	create or replace trigger update_trig after update on emp
+		begin
+			dbms_output.put_line('Record is updated...');
+		end;
+
+	SQL>	update emp set sal=sal+sal*0.10  where deptno=30;		
+		
+	SQL>	create or replace trigger update_trig after update on emp for each row
+		begin
+			dbms_output.put_line('Record is updated...');
+		end;
+
+	SQL>	update emp set sal=sal+sal*0.10  where deptno=30;		
+		
+	
+
+USING THE TRIGGER FOR AUDITING PURPOSE;
+
+	SQL>	create or replace trigger record_old_salary after update on emp for each row
+		begin
+			dbms_output.put_line('Salary updated......');
+			insert into emp_sal_audit values ( USER,sysdate, :old.empno, :old.sal);
+		end;
+
+
+	SQL> select empno,ename, job,sal from emp where empno=7902;
+	SQL> update emp set sal=sal+sal*0.20 where empno=7902;
+	SQL> update emp set sal=sal+sal*0.20 where empno=7902;
+	SQL> update emp set sal=sal+sal*0.20 where empno=7902;
+	SQL> select * from emp_sal_audit;
+        SQL> select empno,ename, job,sal from emp where empno=7902;
+
+		:old to refer the values before update
+		:new to refer the values after  update
+
+
+
+sql > CREATE OR REPLACE TRIGGER EMP_UPDATE_DENIED  
+	BEFORE INSERT OR UPDATE OR DELETE ON EMP FOR EACH ROW
+	BEGIN
+
+	IF ( TO_CHAR(SYSDATE,'Dy') IN ('Sat','Sun') or to_char(sysdate,'HH24') 
+               not between 09 and 18 )
+	then
+	  raise_application_error(-20009,'DML denied on Sat Sun and beyond office hours');
+	end if;
+      end;
+
+SQL>	select empno,ename,job,sal from emp order by deptno;
+SQL>	update emp set job='mktman' where deptno=30;
 
