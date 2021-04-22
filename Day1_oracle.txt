@@ -1622,6 +1622,215 @@ below example is associating -2292 ( child record found ) with user defined exce
         end;
 
 
-	
+------------------------------------------------------------------------
+
+  Procedure  and  Functions
+
+			- stored procedure and stored functions
+
+
+  create or replace procedure greet
+  as
+       hour_of_day number;
+    begin
+       select to_char(sysdate,'HH24') into hour_of_day from dual;
+       if(hour_of_day<12) then
+          dbms_output.put_line('Good Morning');
+       else
+          if(hour_of_day>12 and hour_of_day<16) then
+           dbms_output.put_line('Good Afternoon');
+         else
+            if(hour_of_day>=16 and hour_of_day<21) then
+               dbms_output.put_line('Good Evening');
+            else
+               if(hour_of_day>=21) then
+                  dbms_output.put_line('Good Night');
+               else
+                  dbms_output.put_line('Have a good time');
+               end if;
+           end if;
+        end if;
+     end if;
+   end;
+   /
+  
+SQL> execute greet;
+SQL> select text from user_source where name='GREET'; // GREET must be in capital case
+
+	create or replace procedure change_salary(worker_eno number, new_sal number)
+	as
+		boss_salary number;
+		worker_sal number;
+		check_sal EXCEPTION; -- making a variable of the type Exception
+	begin
+		select boss.sal, worker.sal INTO boss_salary,worker_sal 
+		from emp boss, emp worker 
+		where boss.empno = worker.mgr and worker.empno = worker_eno;
+
+		if(new_sal > boss_salary) then
+			raise check_sal;  -- raise(throw) the exception
+		else
+			update emp set sal=new_sal where empno=worker_eno;
+			dbms_output.put_line('Worker''s salary updated as : '||new_sal);
+		end if;
+
+		exception 
+			when check_sal then
+				dbms_output.put_line('Worker''s salary cannot be more than their 
+				manager''s salary');
+			when others then -- master handler for any other exception
+				dbms_output.put_line('some problem');
+	end;
+
+	SQL> execute change_salary(7782,4500);
+	SQL> select sal from emp where empno=7782;
+
+-------------------------------------------------------------
+
+  declare
+       eno number;
+       newsal number;
+    begin
+        eno:=&EnterEmpNumber;
+        newsal:=&EnterNewSal;
+
+        change_salary(eno,newsal); -- stored block is called here
+   end;
+
+
+-------------------------------------------------------------
+  PROCEDURE WITH IN AND OUT PARAMETERS
+
+
+  CREATE OR REPLACE PROCEDURE EMP_INFO(ENO IN NUMBER, V_ENAME OUT VARCHAR2, V_JOB OUT VARCHAR2)
+  AS
+  BEGIN
+     SELECT ENAME,JOB INTO V_ENAME,V_JOB FROM EMP WHERE EMPNO=ENO;
+     
+     EXCEPTION WHEN NO_DATA_FOUND THEN
+	V_ENAME:=NULL;
+        V_JOB:=NULL;
+  END;  
+----------------------------------------------------------------
+  DECLARE
+       E NUMBER;
+       X VARCHAR2(20);
+       Y VARCHAR2(20);
+    BEGIN
+       E:=&EnterEmpNumber;
+       emp_info(E,X,Y);  -- INVOKE PROCEDURE HERE AND PASS 1 IN AND 2 OUT PARAMETERS
+       dbms_output.put_line('EMP NAME : '||X);
+       dbms_output.put_line('EMP JOB  : '||Y);
+   END;
+   /
+
+
+
+
+	it is not compulsory to return value from a procedure
+
+	it is     compulsory to return value from a function
+
+
+						mandatory to be written
+						   |
+ create or replace function calc_sal(eno number) return number
+    as
+       total_sal number;
+    begin
+       select sal+nvl(comm,0) into total_sal from emp where empno=eno;
+       return total_sal; -- return is mandatory, since its a function
+       exception when no_data_found then
+         return 0;
+    end;
+   /
+
+
+
+
+
+	select greet from dual ;   we cannot call procedure from a select query
+
+	select calc_sal(7839) from dual;  we can call it from a select query
+
+
+	dbms_output.put_line('hello);
+	   |          |
+	package    function
+
+
+		
+
+	myemp.calc_sal(empno) // <-- this is the invocation line
+	myemp.calc_bonus(empno)
+	myemp.upraise_sal(empno,newsal)
+
+
+	mycustomer.findOrder(custid)
+	mycustomer.findProductsOrdered(custid)
+
+
+
+		create or replace package myemp
+		is
+			function  calc_sal(eno number) return number;
+			function  calc_bonus(eno number) return number;
+			procedure upraise_sal(eno number ,newsal number);
+		end;
+		
+  create or replace package body myemp
+  is
+    function calc_sal(eno number) return number
+    as
+      total_sal number;
+    begin
+      select sal+nvl(comm,0) into total_sal from emp where empno=eno;
+      return total_sal; -- return is mandatory, since its a function
+      exception when no_data_found then
+      return 0;
+    end; -- end of the function
+
+    function calc_bonus(eno number) return number
+     as
+      total_bonus number;
+    begin
+      select sal+sal*0.20 into total_bonus from emp where empno=eno;
+      return total_bonus; -- return is mandatory, since its a function
+      exception when no_data_found then
+      return 0;
+    end; -- end of the function
+
+    procedure upraise_sal(eno number ,newsal number)
+    as
+      boss_salary number;
+      worker_sal number;
+      check_sal EXCEPTION; -- making a variable of the type Exception
+    begin
+         select boss.sal, worker.sal INTO boss_salary,worker_sal 
+         from emp boss, emp worker 
+         where boss.empno = worker.mgr and worker.empno = eno;
+
+         if(newsal > boss_salary) then
+            raise check_sal;  -- raise(throw) the exception
+         else
+             update emp set sal=newsal where empno=eno;
+             dbms_output.put_line('Worker''s salary updated as : '||newsal);
+         end if;
+         exception 
+             when check_sal then
+               dbms_output.put_line('Worker''s salary cannot be more than their manager''s salary');
+            when others then -- master handler for any other exception
+               dbms_output.put_line('some problem');
+    end; -- end of the procedure
+
+ end;  -- end of the package body
+
+
+
+
+
+
+
+
 
 
