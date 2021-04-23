@@ -1,0 +1,138 @@
+
+
+		
+
+
+		JDBC API
+
+
+
+		Java Database Connectivity - 
+
+				Application Programming Interface
+
+
+
+
+				DataBase (Oracle)
+	1			| "DATA" LAYER
+				| dept, emp, customer, order, item, product
+				| tables + pl sql
+				|
+				JDBC - built in classes/interfaces
+				|
+		----------------------------------
+	2		|MIDDLEWARE - "BUSINESS" LAYER - java classes/functions 
+		Java Application Server ( spring container )
+			| spring project written in java
+			|
+			|
+	3		|"PRESENTATION" LAYER - CLIENT SIDE
+	------------------------------------------------------------------------------
+	|	|	|	|	| 	|    |         |             |
+	Browser Browser	Browser Browser Browser ATM SmartPhone VisaMachine SimplePhone
+	|	|	|	|	|              Apps	cards	   sms
+	Angular Angular Angular Angular Angular <-- UI Forms (HTML+CSS+TS)
+	|       |          |	 |	|
+	emp    cust      order   item   product
+     details  details   details details details
+
+
+			or third party provider
+				|
+	provided from here	|	provided from DB vendor
+		|		|	  |
+	Java Application <-->Driver <-->Oracle
+
+					MS-SQL Server
+
+					MySQL (Oracle)
+
+					Sybase
+
+					IBM-Db2
+
+					...
+
+
+	We are using driver provided by Oracle
+
+
+		
+
+	lets learn a utility called as JAR before learning JDBC
+
+	it is NOT a prerequisite to learn
+
+	but its better to know what jar files are!!!
+
+	because in jdbc we are referring jar files
+
+
+		jar - Java "ARchieve"
+				|
+			  bundle of "multiple files" as a "single file"
+
+		
+
+		jar -cvf  nameOfTheJarFile.jar   filesToBeAddedHere
+		
+			-c create ( to create the jar )
+			-v verbose ( to show the status )
+			-f filename ( to specify the jar filename )
+
+
+jar -cvf wildanimals.jar     Elephant.class Lion.class Tiger.class
+jar -cvf domesticanimals.jar Cow.class Goat.class
+jar -cvf water.jar           River.class Pond.class Lake.class
+jar -cvf forest.jar          Jungle.class Tree.class BigTree.class
+
+  del *.class ( all class files are lost or deleted )
+
+	How do we see the content of the jar file????
+
+	jar -tvf jarFileName
+
+		-t means table of contents
+
+	jar -tvf wildanimals.jar     
+	jar -tvf domesticanimals.jar 
+	jar -tvf water.jar           
+	jar -tvf forest.jar          
+
+	How to extract the content of an existing jar file ????
+
+		jar -xvf forest.jar
+
+		-x extract files from jar file
+
+	How to update the existing jar file by adding new files in it????
+
+
+		jar -uvf jarFilename  newFilesListHere
+
+		jar -uvf wildanimals.jar Monkey.class
+
+		jar -tvf wildanimals.jar ( to verify if Monkey.class is added)
+
+	
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+				
