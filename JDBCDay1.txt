@@ -116,13 +116,228 @@ jar -cvf forest.jar          Jungle.class Tree.class BigTree.class
 		jar -tvf wildanimals.jar ( to verify if Monkey.class is added)
 
 	
+	
+
+       Now lets see oracle related jar files used in JDBC
+
+
+	in my case   : ojdbc6_g.jar
+
+	in your caes : ojdbc8_g.jar
+
+	Lion.class Tiger.class Monkey.class are present in wildanimals.jar
+	
+	same way 
+		OracleDriver.class (present in ojdbc8_g.jar)
+			<- this file will help us
+				to connect to the oracle database
+
+
+
+ 	below is the logical diagram (not inheritance diagram)
+
+
+	java.sql.Driver
+
+				Driver <--interface
+				 | implements 
+1.	KNOWING YOUR DRIVER	OracleDriver <-class <-- will help to connect to the DB
+				 |
+		---------------------------------
+			
+
+
+2. REGISTER IT   	DriverManager <-class
+			| static void       registerDriver() <-- to register above driver
+3. CONNECT IT  		| static Connection getConnection("dsn","system","manager");
+			|	dsn means data source name
+			| 	where is the database/ip/port/instancename
+			|
+	------------------------------------
+				
+
+			Connection <-- interface
+				|
+		----------------------------------------------
+		|		|		    	|
+4. CHOOSE	Statement (i)	PreparedStatement (i) 	CallableStatement (i)
+   YOUR		select		insert/update/delete	procedure/function
+   STATEMENT			
 		
 
+		CAN WE CREATE AN INSTANCE OF AN INTERFACE???
+
+		NO WE CANNOT CREATE AN OBJECT OF AN INTERFACE,
+
+		BUT WE CAN CREATE HANDLE/REFERENCE TO AN INTERFACE
+
+		Payment pmt = new Payment(); // is an error, but
+
+		Payment pmt = new CashPayment(); // is possible		
+					|
+			CashPayment   is an IMPLEMENTATION OF Payment
+			ChequePayment is an IMPLEMENTATION OF Payment
+			NEFTPayment   is an IMPLEMENTATION OF Payment
+			GPayment      is an IMPLEMENTATION OF Payment
+
+		hence pmt can point to any one of the above implementations
+	
 
 
 
 
 
+	how to set the path of the jar file in eclipse
+
+	1. right click on the project
+	2. goto the properties
+
+	3. left side panel -> Java Build Path
+	4. right side panel -> Libraries
+
+	5. Click on -> Add External Jars...
+	6. locate the jdbc/lib folder of oracle installation structure
+	7. select ojdbc8_g.jar -> Open
+	8. apply and close
+
+
+
+================================================================
+
+
+
+	7 Habits of Highly Effective People
+			- Stephen Covey
+
+	you cannot decide your future!!!
+
+	But you can decide your habits!!!!!!
+
+	And your habits will decide your future
+
+
+	private victory
+		1. Be Proactive - self inspired
+
+		2. Begin with "The End" in Mind - jar/dml/ddl/dao
+
+		3. Put First Thing First - no whatsapp "9 to 6"
+
+
+		4. Think Win-Win
+
+	public victory
+
+		5. Seek First To understand then to be understood
+	
+		6. Synergy - two plants with sytergize their roots in same soil
+
+		7. Sharpen The Saw
+
+
+
+
+
+
+		DAO - Data Access Object
+
+
+						Kitchen - (MODEL DATA)
+						|  chef (with raw materials)
+						|     insert into....
+						|     update ...
+						|     delete ...
+						|     select...
+						|
+				OrderCollector	+	Food Server (PRESENTER)
+				(Controller)	|
+			-------------------------------------
+			|
+		Actual Dining Table1 - 4 customers - pizza
+
+		Actual Dining Table2 - 4 customers - idli
+
+		Actual Dining Table3 - 4 customers - dosa
+ 
+		Actual Dining Table4 - 4 customers - wada
+
+	
+
+	we want to separate the data access logic from business logic
+
+	Plain Old Java Object			
+	will expose the table structure
+
+	e.g. for Dept - Department
+	     for Emp  - Employee
+
+		POJO		POJO
+				interface
+				| would expose CRUD methods
+				|
+				POJO
+				interface 
+				implementor
+
+				Test Application
+
+
+
+		Department 	DepartmentDAO  - interface
+		|		| would expose CRUD methods
+		same as dept	|
+		table		DepartmentDAOImpl - interface  implementor
+
+
+				Test Application
+
+	
+
+
+Assignment 
+-------------------
+		Employee	EmployeeDAO  - interface
+		|		| would expose CRUD methods
+		same as emp	|
+		table		EmployeeDAOImpl - interface  implementor
+
+
+				Test Application
+
+
+
+	class Employee
+	{
+		empno,name,job,hiredate,mgr,sal, comm,deptno
+		getter/setter
+	}
+	class EmployeeDAO
+	{
+		void addEmployee(Employee dRef);
+
+		Employee findEmployee(int eno);			
+
+		List<Employee> findEmployees();			
+		List<Employee> findEmployees(int dno);			
+		List<Employee> findEmployees(String job);			
+		List<Employee> findEmployees(Date hiredate);			
+
+		void modifyEmployee(Employee dRef);		
+		void removeEmployee(Employee dRef);
+  		void removeEmployee(String job);
+  		void removeEmployee(int deptno);
+	}
+
+
+
+
+
+
+
+System.out.println("dept number   : "+deptObj1.getDepartmentNumber());
+		System.out.println("dept name     : "+deptObj1.getDepartmentName());
+		System.out.println("dept location : "+deptObj1.getDepartmentLocation());
+	
 
 
 
