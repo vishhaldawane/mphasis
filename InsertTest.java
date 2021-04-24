@@ -1,0 +1,74 @@
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.Scanner;
+
+public class InsertTest {
+	public static void main(String[] args) {
+		try
+		{
+			//1st step : load the driver
+			System.out.println("Trying to load the driver.......");
+			DriverManager.registerDriver(new oracle.jdbc.OracleDriver());
+			System.out.println("Driver loaded....");
+		
+			//2nd step : connect to the database 
+			System.out.println("Trying to connect to the database");
+//jdbc:oracle:thin:@localhost:1521:yourInstanceName XE/ORCL/OSE whaterver name found in tnsnames.ora file
+			Connection conn = DriverManager.getConnection("jdbc:oracle:thin:"
+					+ "@DESKTOP-EPTT35F:1521:XE", "system", "manager");
+			System.out.println("Connected to the database");
+			
+			//by default all DML statements are autocommited...in JDBC
+			
+			// if you want disable the autocommit of jdbc, then use below line
+			conn.setAutoCommit(false); // now auto commit is off
+			
+			// DDL statement performs autocommit the data
+			
+			System.out.println("Trying to make a PreparedStatement for DML(insert)");	//3rd step : create statement of your choice select(DQL)/DML/PL-SQL(proce/funs)
+			PreparedStatement pst = conn.prepareStatement("insert into dept values (?,?,?)"); // this is for DML
+			
+			Scanner scan1 = new Scanner(System.in);
+			Scanner scan2 = new Scanner(System.in);
+			Scanner scan3 = new Scanner(System.in);
+			Scanner scan4 = new Scanner(System.in);
+			
+			System.out.println("Enter dept number   : "); int dno = scan1.nextInt(); //90
+			System.out.println("Enter dept name     : "); String dnm = scan2.next(); //Coding <-ENTERKEY
+			System.out.println("Enter dept location : "); String dloc = scan3.nextLine(); //<-above ENTERKEY is carried here
+			
+			pst.setInt(1, dno);	pst.setNString(2, dnm); pst.setNString(3, dloc);
+			System.out.println("PrepareStatement made....for DML");
+			
+			System.out.println("Trying to fire it... ");	//4th step : fire the statement and acquire result if any
+			int rows = pst.executeUpdate(); //fire the pst associated insert query
+			
+			
+			String ans = null;
+			do {
+				System.out.println("Do you want to save this record (yes/no) ? ");
+				ans = scan4.nextLine(); // jack
+				
+			}while( ! (ans.equalsIgnoreCase("yes") || ans.equalsIgnoreCase("no")) );
+		
+			if(ans.equalsIgnoreCase("yes")) {		conn.commit();
+				System.out.println("Rows inserted...."+rows);
+			}
+			else if(ans.equalsIgnoreCase("no")) {	conn.rollback();
+				System.out.println("Rows discarded...."+rows);
+			} 
+			System.out.println("Trying to close PrepareStatement,Connection....");
+			pst.close();  conn.close();  // close DB resources
+			System.out.println("PrepareStatement,Connection closed....");
+			System.out.println("End of main...");
+		}
+		catch(SQLException e) {
+			System.out.println("Some SQL problem : "+e);
+		}
+	}
+}
+
