@@ -175,6 +175,17 @@ E. 	browser url would be
 						add the above word press GO
 
 
+	Todays assignment
+
+		servlet with JDBC
+
+			show the output of emp table 
+			
+	make one new servlet as EmployeeServlet to process this assignment
+				   |
+				known as "/emps" url pattern
+
+
 
 
 
