@@ -39,8 +39,8 @@
 	
 
 
-	Its a server side java component ( .class file )
-	to generate dynamic web output
+	Its a "server side" java component ( .class file )
+	to generate dynamic web output - we have seen google currency converter
 
 	it is never downloaded at at the client side
 
@@ -89,8 +89,8 @@ browser: http://ipMachine1:8080/MyProject/convert (USD/EUR)
 		| init() {} destroy() { } 
 		| getServletConfig() { } getServletInfo() { }
 	--------------------------------------
-	|
- 3 CurrencyConverterServlet
+	| /convert
+ 3 CurrencyConverterServlet <-- you have to specify the "URL mapping name" ie any nick name
 	service() { must be defined here }
 
 
@@ -100,7 +100,7 @@ browser: http://ipMachine1:8080/MyProject/convert (USD/EUR)
 
 	Web Application Project folder has a standard structure as below
 
-			MyProject <-- make it as DYNAMIC WEB PROJECT <-eclipse
+		 CurrencyConversionProject <-- make it as DYNAMIC WEB PROJECT <-eclipse
 			    |
 	----------------------------------------------
 		|			|
@@ -112,7 +112,14 @@ browser: http://ipMachine1:8080/MyProject/convert (USD/EUR)
    classes			web.xml <-- deployment descriptor file
         |			     |
 CurrencyConverterServlet.class       describe your resources
-
+					/convert would be mapped here
+					
+	below is the URL to start the web applicatiom
+	|
+	http://localhost:8085/CurrencyConversionProject/
+					|
+				it will search "web.xml" and will identify
+				the first welcome file to run - Home.html
 
 
 A.	How to make your First Dynamic Web project
@@ -139,5 +146,37 @@ C.	right click on project -> Run As -> Run on Server -> next -> Finish
 		(Restart server all the time - for each run)
 
 
-			
+		
+
+How to make your own servlet
+
+A. 1	right click on src -> New -> Servlet
+
+ 2	specify java package -> com.currency
+	specify servlet name -> CurrencyConverterServlet1
+	specify super class  -> click on browse -> 
+			Choose a super class -> type-> GenericServlet -> Ok
+
+ 3	click NEXT -> URL mappings -> select it -> Click Edit...
+			-> supply Pattern as /convert -> NEXT
+
+ 4	click the check boxes for init, service, destroy
+
+ 5	FINISH
+
+B.	Open CurrencyConverterServlet1.java
+		and write sysout lines in each function as per its contract
+
+C. 	Observe the web.xml -> servlet tag, servlet-mapping tag
+D.	right click on the project -> Run as ->Run on Server
+E. 	browser url would be 
+	http://localhost:8085/CurrencyConversionProject/convert
+							  |
+						add the above word press GO
+
+
+
+
+
+	
 		
