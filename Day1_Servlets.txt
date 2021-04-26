@@ -1,0 +1,143 @@
+
+
+
+
+
+
+
+
+		Servlets and JSP
+		|
+	to generate "dynamic" web output
+
+
+				
+				Java Program
+					|
+			-----------------------------------------------------
+			|		|			|
+		applications		applets			servlets
+			|		|			|
+			main()		<-------life -cycle ------->
+					init - once		init()	
+					start - begin the view  service()
+					stop - hide the view	destroy()
+					paint - on refresh
+					destroy - stop, then destroy
+			|		|			|
+			javac		javac			javac (develop it)
+			java		appletviewer		apache+tomcat (deploy it)
+								browser (run it)
+
+
+
+	Applet = small java program (.class) <-- javac
+		 embedded in HTML file (.html) <-- browser/appletviewer
+
+	
+
+	
+
+
+	Its a server side java component ( .class file )
+	to generate dynamic web output
+
+	it is never downloaded at at the client side
+
+	it always run on the Server side
+
+	hence it is known as SERVlet
+
+	RC HA MT P C T S
+
+			Machine1		MyProject <-- folder
+			|			 |
+			|  apachet + tomcat (CurrencyConverterServlet.class)
+			|	nick name as -> convert
+			|		init(), service(), destroy()
+			|		 |	  |		|
+			|		once  for each	 if existing file
+			|		      customer   is updated
+	---------------------------------------------------------------
+		|	  |		|		|	
+		Machine2 Machine3	Machine4	Machine5
+		|		|	  |		|
+		|		|	  | http://ipMachine1:8080/MyProject/convert ( tannzanian / USD)
+		|		| http://ipMachine1:8080/MyProject/convert (USD/Kuwaiti Dinar)
+		|	http://ipMachine1:8080/MyProject/convert (Rs/USD)
+browser: http://ipMachine1:8080/MyProject/convert (USD/EUR)
+				   |
+			Web Application Project folder
+
+
+
+
+
+
+
+	lets start coding our first servlet program
+
+
+	1		Servlet <-- interface <--- javax.servlet
+			 | init(), service(), destroy()
+			 | getServletConfig(), getServletInfo()
+			 |
+		---------------------------------
+		| implements
+		|
+  2 abstract  GenericServlet <--- javax.servlet
+		| init() {} destroy() { } 
+		| getServletConfig() { } getServletInfo() { }
+	--------------------------------------
+	|
+ 3 CurrencyConverterServlet
+	service() { must be defined here }
+
+
+
+	This -> MyProject --> is your web application folder/project
+
+
+	Web Application Project folder has a standard structure as below
+
+			MyProject <-- make it as DYNAMIC WEB PROJECT <-eclipse
+			    |
+	----------------------------------------------
+		|			|
+		WEB-INF			lib
+		|			|
+		|			jar files here
+	--------------------------
+	|			|
+   classes			web.xml <-- deployment descriptor file
+        |			     |
+CurrencyConverterServlet.class       describe your resources
+
+
+
+A.	How to make your First Dynamic Web project
+
+1.	right click -> New -> Project -> Web -> Dynamic Web Project
+2.      Project name -> MyProject1
+3.	Target Runtime -> click on New Runtime... button
+4. 	Under Apache section -> select Apache Tomcat 9 -> next
+5.	specify the tomcat installation folder ->  issue below path
+		D:\JAVATRAINING\java\apache-tomcat-9.0.45
+		<--thisIsAsPerUrpc--><-----as it is ---->
+
+6.	dynamic web module version : select as -> 2.5  ( MUST DO IT )
+7.	CLICK ON NEXT,		8.	CLICK ON NEXT	9. 	CLICK ON FINISH
+
+	In the proejct	 | locate ->WebContent 	|right click on it
+				|
+				New -> HTML file
+					|
+					index.html -> finish
+
+B.	inside index.html -> write some static tag code
+C.	right click on project -> Run As -> Run on Server -> next -> Finish
+		(Restart server all the time - for each run)
+
+
+			
+		
