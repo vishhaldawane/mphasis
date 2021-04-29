@@ -88,10 +88,17 @@ browser: http://ipMachine1:8080/MyProject/convert (USD/EUR)
   2 abstract  GenericServlet <--- javax.servlet
 		| init() {} destroy() { } 
 		| getServletConfig() { } getServletInfo() { }
-	--------------------------------------
-	| /convert
- 3 CurrencyConverterServlet <-- you have to specify the "URL mapping name" ie any nick name
-	service() { must be defined here }
+	-----------------------------------------------------------
+	| /convert				|
+ 3 CurrencyConverterServlet 			HttpServlet - to process http request
+	service() { must be defined here }	| service() already defined here,
+						|- never override service method
+					-----------------------------------
+					|	|	|	|	|
+				  doGet()   doPost() 
+				 "default"
+
+<-- you have to specify the "URL mapping name" ie any nick name
 
 
 
@@ -188,6 +195,372 @@ E. 	browser url would be
 
 
 
+
+
+			ServletWithParametersProject (1)
+				|
+	---------------------------------------------------
+		|				| <-- managed by WebContent
+		WEB-INF			DataEntry.html		for eclipse
+		|				|
+		|				input 3 values from user
+		|				submit -> action="dept"
+	---------------------------------------
+	|		|		|
+	classes		web.xml		lib
+	|		|
+DepartmentServlet <----/dept
+			welcome file->DataEntry.html
+
+	(1) - Run this on Server
+	(2) - web.xml -> welcome file -> DataEntry.html would run and wait
+					 for user input and submit click
+	(3) - on click of submit -> dept -> DepartmentServlet is instantiated
+	(4) init() is called, service is called
+	(5) service -> will read request.getParameter to read 3 html values
+	(6) it will serve these 3 values back to the customer in table format
+
+
+
+
+
+<input type=submit name=submit value="Add Dept">
+<input type=submit name=submit value="Delete Dept">
+<input type=submit name=submit value="Find All Depts">
+<input type=submit name=submit value="Find Dept">
+<input type=submit name=submit value="Modify Dept">
+
+
+
+
+
+
+
+
+
+	WE ARE LIVING IN A 7 FLOOR BUILDING - BUT OUR 
+	MAIN STAY IS ALWAYS ON TH 4TH FLOOR
+	- NEVER BEEN TO ANY OTHER FLOORS - BUT POSSIBLE TO VISIT 
+
+
+
+		7	SUPER - conscious - (mind - intangible )
+			|
+		6	cosmic conscious - 
+			|
+		5	unity conscious (mind - intangible )
+			|
+WE LIVE HERE ->	4	conscious (mind - intangible ) - LEARN JAVA OR WORLDLY MATTERS
+			|
+		3	unconscious (mind - intangible ) - RUNS UR HEART,LIVER
+			|			BRAIN ALL INTERNAL ORGANS
+			|
+		2	unity unconscious (mind - intangible )
+			|
+		1	cosmic unconscious (mind - intangible )
+
+
+
+
+
+
+		
+
+
+
+
+		public void addDepartment(Department deptObj) throws DepartmentAlreadyExistException
+		{
+			
+		}
+
+		from your servlet
+		|
+			try {
+				Department dept = new Department();
+				ddi.addDepartment(dept);
+				pw.println("<h3>Department added...</h3>");
+			}
+			catch(DepartmentAlreadyExistException e)
+			{
+				pw.println("<h3>Department addition issue : "+e.getMessage()+"</h3>");	
+			}
+			
+
+		who has placed the order-----------+
+		|				cust info - 
+		|				   | name/email/mobile/address/fooddeatils
+		|				   |		
+		Once your confirm your order - OrderServlet
+		|                                      |
+		prepare the food item		- PrepareFoodServlet
+		|                                      |
+		once the food item is prepared         |
+		|                                      |
+		out for delivery		- DeliveryServlet
+
+
+	Request processing lifecycle
+
+		A		B		C
+		|		|		|
+		include		include		include
+		outputA	   +	outputB    +    outputC
+		
+		forward		forward		ultimate output
+		outputignored	outputignored	outputC shown			
+
+		RequestDispatcher in the above example
+			|
+		-------------------
+		|		|
+		include		forward
+
+	=============================================================
+		
+
+	Session processing lifecycle
+
+                     ------------------User3(cart)--------+
+                     |                    |               |
+		ClothServlet	ElectronicServlet	BillingServlet
+                |                       |                     | |
+		|			|		      |	|
+		|			+------User2(cart)----+ |
+		|                                               |
+		---------------User1(cart)----------------------+
+	
+	
+		HttpSession <-- similar as cart in a shopping mall
+			|
+		---------------------
+		|		|
+	setAttribute		getAttribute
+
+	ClothServlet   will maintain a table for user1,user2,user3
+	ElectServlet   will maintain a table for user1,user2,user3
+	BillingServlet will maintain a table for user1,user2,user3
+
+
+	and that table would be a "hash table" with unique user id
+
+
+	session id
+	24 digit/
+	universal
+	id		ClothServlet	ElectServlet	BillingServlet
+	|		|		|		|
+	|		|               |               |
+	123(user1)	shirt | jeans   NA		cost here
+			3        5	-
+
+	223(user2)	NA		tv  video	cost here
+			-		2	5
+
+	333(user3)	shirt  | jeans	tv  video	cost here
+			2        5       1   7
+
+
+	First Extract that zip file from github
+	|
+	rightclick in project explorer
+	-> import -> import...
+	-> General -> Existing project into workspace
+	-> Select Root directory : The EXTRACTED FOLDER OF SessionProject
+	-> checkbox -> Copy Project into existing workspace
+	-> Finish
+
+	-> Rightclick on the SessionProject->properties
+		and refix the JRE System Library (which is unbound)
+			-> java build path - remove the unbounded library
+			-> LibrariesTAB=>Add Library->JRE system library
+			-> select workspace default JRE ->finish
+			
+		
+		and refix the Server Runtime Library (which is unbound)
+			-> java build path - remove the unbounded library
+			-> LibrariesTAB=>Add Library->Server Runtime
+			-> select Apache tomcat -> finish
+
+some people have to change the port number depending your apache 8080/8085
+		
+
+
+
+
+	What is Java script????
+
+
+
+		its a client side (Browser) code 
+		to perform validation on html file
+
+		.html	.css	.js
+		|	|	|
+		view	style	validation
+
+
+		JSP = java server page (means it will never go to browser)
+		.jsp files ( are run on tomcat - never goes to browser)
+		.js  file (javascript goes to the browser and runs there)
+
+			AirlineApplication
+				|
+		--------------------------------------------------------
+		|		|	|	  |		|
+		WEB-INF	    index.html index.css index.js	index.jsp
+		|
+	----------------
+	|
+	classes
+		
+				| apache+tomcat
+				| web	    |
+				| server   servlet container to manage
+				|	   the life cycle of servlet
+				|	   index.html+index.css+index.js
+				|
+				|   .jsp/servlet will run here on tomcat and
+				|   "output" of that will goto browser
+				|
+		------------------------------
+		|
+		|
+		|
+	------------------------------
+	|	|	|	|
+	cust1	cust2	cust3	cust.....
+	Browser Browser Browser Browser
+	html	html	html	html
+	css	css	css	css
+	js	js	js	js
+
+
+
+
+	What is required knowlege to make a servlet
+
+		1. packages ..make your package
+		2. import  ...sevlet packages
+		3. extends GenericServlet
+		4. learn constructor 
+		5. init, destroy, service
+		6. parameters of service --request and response
+		7. make print writer from response
+		8. then finally pw.println........
+
+
+GreetServlet.java
+---------------------
+	pw.println("   <h7> Greeting from Servlet</h7>     ");
+	   |				|		   |
+	java code		   html tag		java code
+
+
+		html is imprisoned / locked in 	of java code
+
+
+First.jsp	--> now the java code is locked inside html tags
+----------------
+		</head>
+		<body>
+		for(int i=1;i<=6;i++)
+		{
+			pw.println("<h"+i+"> Greeting from Servlet</h"+i+">");
+		}
+		</body>
+
+	
+First.jsp -> JSP Engine translates that jsp file into a .java code (servlet )
+
+		First.jsp --> First_jsp.java <--your servlet autocoding here
+				|
+				First_jsp.class <-- this is deployed
+
+
+
+
+
+
+	4th Generation time table
+
+
+	=================================================================
+			|	URGENT	| 	NOT URGENT	
+	=================================================================
+			|whatsapp	|	brushing teeth
+			|facebook	|
+			|instagram	|
+	IMPORTANT	|door bell ring |	bathing 
+			|		|
+			|		|
+	-----------------------------------------------------------------
+			|  		| project
+	NOT 		|		| oracle study for coming exam
+	IMPORTANT	|		| vodafone post bill
+			|		|
+	-----------------------------------------------------------------
+	
+	
+
+
+
+		first.html
+			|
+	------------------------------------------
+		|			|
+		form			form
+		|			|
+		submit			submit
+		|			|
+	--------------			----------------------
+	|	   |			|		|
+	v_dno	First.jsp <-----+	v_dno		greet
+		|		|			|
+	----------------	|	------------------			
+	|			|		|
+request.getParameter(v_dno)	|	request.getParameter(v_dno)
+				|		|
+				|	RequestDispatcher->First.jsp
+				|		|
+				+------<----include/forward
+
+
+
+
+
+
+
+
+1. scriptlet
+
+	<% java code is here %>
+
+2. fetch a variable/ fetch return value of a method
+	    |			|
+	<%=var>		<%= javaMethodCall %>
+
+3. page directive
+	<%@page contentType="text/html"%> same as response.setContentType("text/html");
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
 
 	
 		
