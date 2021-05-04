@@ -228,6 +228,60 @@ setting the apache maven home
 
 
 		
+	 
+ 1. first make a folder of your choice : and enter into it : mkdir MYEMPLOYEE
+
+ 2. cd d:\javatraining\MYEMPLOYEE>
+
+	mvn 
+	archetype:generate 	
+	-DgroupId=com.employee 	
+	-DartifactId=EmployeeProject 	
+	-DarchetypeArtifactId=maven-archetype-quickstart 
+	-DinteractiveMode=false
+ 
+ 3. cd EmployeeProject
+ 4. notepad pom.xml - add below lines in <project> tag |(not in dependencies )
+	<properties>
+          <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+          <maven.compiler.source>1.8</maven.compiler.source>
+          <maven.compiler.target>1.8</maven.compiler.target>
+        </properties>
+  5. mvn clean compile <-- will compile App.java and 
+  6. cd target\classes <-- App.class is generated here
+  7. java com.employee.App <-- to run this program
+
+
+
+
+mkdir myjars >  notepad CircusTest.java
+				|
+	class CircusTest {
+	public static void main(String args[])
+	{
+		System.out.println("Circus Test is running...");
+	}
+} class Lion { }class Tiger { }class Elephant { }
+-----------------------------------
+
+myjars > notepad manifest.mf
+Main-Class: CircusTest
+|   ||     |
+|   -|   space
+capitalcase
+    
+myjars > javac CircusTest.java
+myjars > jar -cvmf manifest.mf wild.jar Lion.class Tiger.class Elephant.class CircusTest.class
+
+myjars > java -jar wild.jar <-- jvm will find out the main class from manifest file
+
+
+
+
+
+
+
+
 
 
 
