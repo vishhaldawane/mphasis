@@ -1,0 +1,234 @@
+	
+
+
+
+	class DrunkenMaster
+	{
+
+		void drinkAndFight() 
+		{
+			//knows all 8 methods to fight
+		}
+
+	}
+
+	class DrunkenDisciple extends DrunkenMaster
+	{
+		void drinkAndFight() throws KnockedDownException
+		{
+			super.drinkAndFight(); //learning all 8 methods
+			//plus additional steps self learned - combinations
+		}
+
+	}
+
+
+
+	class Mother
+	{
+		void handWriting()
+		{
+			//100% beautiful - all letters are beautiful
+		}
+	}
+	class Daughter extends Mother
+	{
+		void handWriting() throws DirtyLetterException
+		{
+			//much more beautiful
+		}	
+	}
+
+
+
+
+whatsapp.web	mphasis outlook	  webx   yammer  facebook .... some websites
+
+
+		wave and particile theory
+
+		a wave <--when your attention is missing
+		a particle <-- when your attention is there on it
+
+			    measure the distance
+		|<------------------------------------->|
+		Particle A<-eye				ParticleB 
+		|					|
+		Atom					Atom
+		|					
+		your attention
+		is here
+		|
+		HENCE it is a particle			here attention is not
+							there (while attention
+							onA) 
+							then it is a wave
+							|
+							just a probability
+
+
+
+
+
+
+
+
+
+
+
+
+
+		Maven
+		|
+		a tool to resolve the dependencies of the project
+		|
+
+				Your Web Project
+					|
+	---------------------------------------------------------------------------------------------
+	|		|		|		|	|	|		|
+  GreetServlet	tomcat libraries	jdbc		junit  spring	hibernate	anyother dependencies
+		|			|		|	jars	jars		jars
+	servlet-api.jar			ojdbc8_g.jar	junit related jars
+	jsp-api.jar					junit4.0.jar
+							junit5.0.jar
+
+
+Pawan		Mounika		Mugambika	Haneesha	Prashant
+|		|		|		|		|
+JDK1.8	OR	JDK11		JDK15		JDK16		JDK8
+tomcat8	?	tomcat9		tomcat10	tomcat9		tomcat9
+junit4		junit5		junit4		junit5		junit4
+ojdbc8		ojdbc6		ojdbc6		ojdbc9		ojdbc8
+spring5		spring4		spring5		spring4		spring5
+hibernate5	hibernate4	hibernate5	hibernate4	hibernate5
+
+		project object model
+
+Pawan		Mounika		Mugambika	Haneesha	Prashant
+|		|		|		|		|
+mavenproject mavenproject  mavenproject   mavenproject    mavenproject
+|		|		|		|		|
+pom.xml		pom.xml		pom.xml		pom.xml		pom.xml
+|		|		|		|		|
+describes
+dependencies
+<jdk1.8 ...>	..		..		..		...
+<tomcat10 ...>	..		..		..		...
+<Junit5>	..		..		..		...
+<ojdbc 8...>	..		..		..		...
+<spring5..>	..		..		..		...
+<hibernate5>	..		..		..		...
+
+
+
+	Internet			
+	|
+	1. maven repository
+		|
+	-----------------------------
+	|			|
+	3. local 		2. global
+	repository		repository
+	|			|
+	your own machine	mhpasis company server
+				ojdbc8_g.jar
+
+
+
+
+
+
+
+
+
+		what is a jar.
+		
+		Java ARchieve - collection of many files as a single unit!!!
+
+Development of web project Code  	vs	Deployment of web project Code
+		|			|	|
+	actual coding				packaging
+		|				|
+code for web.xml, servlet .java files		making the .war file
+code for html, css, .jsp pages			Web Archieve file
+	
+
+		CurrencyConversionProject <-- make it as DYNAMIC WEB PROJECT <-eclipse
+			    |
+	----------------------------------------------
+		|			|
+		WEB-INF			lib
+		|			|
+		|			jar files here (ojdbc8_g.jar)
+	--------------------------
+	|			|
+   classes			web.xml <-- deployment descriptor file
+        |			     |
+CurrencyConverterServlet.class       describe your resources
+some additional servlets here  	   /convert would be mapped here
+
+
+
+
+setting the apache maven home
+
+	set M2_HOME=D:\JAVATRAINING\apache-maven-3.8.1 <-- to know maven home
+
+	set M2=%M2_HOME%\bin <-- to know maven binaries
+
+	set path=%M2%;%path% <-- setting operating system path to know maven
+
+	mvn -version
+
+
+
+	
+	lifecyle to build a maven project
+
+
+	phase1:	prepare-resources ( .java .jsp code preparedness)
+
+	phase2: validate ( check other xml or conf files )
+
+	phase3: compile (javac)
+
+	phase4: Test ( eg junit )
+
+	phase5: package ( making .jar or .war or .ear file )
+
+	phase6: install  ( in maven repo )
+
+	phase7: Deploy
+
+
+
+	 
+ 1. first make a folder of your choice : and enter into it : mkdir mymaven
+
+ 2. cd d:\javatraining\mymaven>
+
+	mvn 
+	archetype:generate 	
+	-DgroupId=com.student 	
+	-DartifactId=StudentProject 	
+	-DarchetypeArtifactId=maven-archetype-quickstart 
+	-DinteractiveMode=false
+ 
+ 3. cd StudentProject
+ 4. notepad pom.xml - add below lines in <project> tag |(not in dependencies )
+	<properties>
+          <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+          <maven.compiler.source>1.8</maven.compiler.source>
+          <maven.compiler.target>1.8</maven.compiler.target>
+        </properties>
+  5. mvn clean compile <-- will compile App.java and 
+  6. cd target\classes <-- App.class is generated here
+  7. java com.student.App <-- to run this program
+
+
+		
+
+
+
+
