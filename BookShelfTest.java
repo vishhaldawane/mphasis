@@ -14,16 +14,18 @@ public class BookShelfTest {
 		Book b7 = new Book("The Autobiography Of A Yogi","SS P Yogananda",1,950,125.00f);
 		Book b8 = new Book("The Autobiography Of A Yogi","SS P Yogananda",1,950,125.00f);
 		
+		
+		11:45
 		*/
 		
 		Book b1 = new Book("The Java Programming Language","James Gosling",4,1100,1250.00f);
 		Book b2 = new Book("The Java Programming Language","James Gosling",4,1100,1250.00f);
 		Book b3 = new Book("The Java Programming Language","James Gosling",4,1100,1250.00f);
-		Book b4 = new Book("The Java Programming Language","James Gosling",4,1100,1250.00f);
-		Book b5 = new Book("The Java Programming Language","James Gosling",4,1100,1250.00f);
+		Book b4 = new Book("The Java Programming Language","James Gosling",4,1100,1251.00f);
+		Book b5 = new Book("The Java Programming Language","James Gosling",4,1000,1250.00f);
 		Book b6 = new Book("The Java Programming Language","James Gosling",4,1100,1250.00f);
 		Book b7 = new Book("The Java Programming Language","James Gosling",4,1100,1250.00f);
-		Book b8 = new Book("The Java Programming Language","James Gosling",5,1100,1250.00f);
+		Book b8 = new Book("The Java Programming Language","Ken Arnold",4,1100,1250.00f);
 		
 		Book b9 = b1;
 		Book b10 = b1;
@@ -109,7 +111,11 @@ class Book
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + edition; // 31 * 1 + 4 = 35
+		result = prime * result + ((authorName == null) ? 0 : authorName.hashCode());
+		result = prime * result + ((bookName == null) ? 0 : bookName.hashCode());
+		result = prime * result + Float.floatToIntBits(bookPrice);
+		result = prime * result + edition;
+		result = prime * result + numberOfPages;
 		return result;
 	}
 
@@ -126,11 +132,37 @@ class Book
 		
 		Book other = (Book) obj;
 		
-		if (edition != other.edition)  // 4 != 4 
+		if (authorName == null) {
+			if (other.authorName != null)
+				return false;
+			
+		} else if (!authorName.equals(other.authorName))
 			return false;
+		
+		
+		if (bookName == null) {
+			if (other.bookName != null)
+				return false;
+			
+		} else if (!bookName.equals(other.bookName))
+			return false;
+		
+		
+		if (Float.floatToIntBits(bookPrice) != Float.floatToIntBits(other.bookPrice))
+			return false;
+		
+		if (edition != other.edition)
+			return false;
+		
+		if (numberOfPages != other.numberOfPages)
+			return false;
+		
 		
 		return true;
 	}
+
+	
+	
 	
 	
 	
