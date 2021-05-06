@@ -1,0 +1,214 @@
+
+
+
+
+
+		Hibernate
+
+			is an ORM Framework
+
+	Object	Relational  Mapping
+	|	  |		 |
+      java   database Table	association
+	|	 |		isA hasA usesA producesA
+	|	 |
+	class    table
+	|	   |
+class Department   dept
+  departmentNumber   deptno
+  departmentName     name
+  departmentLoc      loc
+    getters		no methods
+    setters		here
+					DEPT
+Department d2=			    PK->deptno  name        loc	
+new Department();			------	-----	    -----
+  d2.setDepartmentNumber(19);	row1    10      Accounting  NY	
+  d2.setDepartmentName("QMS");	row2    19      QMS         Mumbai
+  d2.setLoc("Mumbai");		row3	20	Test	    Chennai
+
+ its an object
+ and not a row
+					EMP				FK
+	d1 for 10 Accounting 		empno  ename job hiredate .... deptno
+	d2 for 19 QMS			7839   KING  PRE 12-Mar-99     10
+	d3 for 30 Test...		7832   FORD  CLE 12-Mar-98     10
+					7833   JOHN  MAN 12-Mar-97     10
+	
+hundreds of objects ... hundreds of rows
+
+
+@Entity
+@Table("dept")
+class Department { 
+
+	@Id
+	int departmentNumber; //PRIMARY KEY
+
+	String departmentName;
+	String departmentLoc;
+
+	List<Employee> empList = new ArrayList<Employee>(); //hasA
+
+	getters/
+	setters
+
+}  
+
+@Entity
+@Table("emp")
+class Employee {  //child table emp FOR THIS CLASS
+
+	@Id
+	int employeeNumber; //PRIMARY KEY
+
+	@Column
+	..name
+	..job
+	..sal
+	..
+
+	@JoinColumn  // foreign key 
+	Department d = new Department(); //FOREIGN KEY
+	
+}
+
+
+	SELECT * FROM DEPT,EMP WHERE DEPT.DEPTNO = EMP.DEPTNO
+
+
+
+
+			JAVA Persistence API - JPA
+
+		storing java object in database table in the form of a row
+
+
+
+
+
+
+
+	@Override	<-- annotation is an 
+			extra information of a class/field/method/parameter
+			and so on...
+
+	class A
+	{
+		void fun() { }
+	}
+	
+	class B extends A
+	{
+		@Overrride
+		void funn() { }
+	}
+
+
+
+
+
+<dependency>
+    <groupId>org.hibernate</groupId>
+    <artifactId>hibernate-core</artifactId>
+    <version>5.0.5.Final</version>
+</dependency>
+
+
+
+
+
+1. create a maven project
+2. pom.xml
+	|
+	add dependency for hibernate
+	add dependency for database (oracle)
+	add dependency for junit (if required)
+
+3. make the pojo - Entity class
+4. make hibernate configuration file
+5. write the code for Persistence
+
+
+
+
+
+	class MyCarFactory
+	{
+		Engine e = new Engine();
+
+		static Engine getEngine()
+		{
+			what if some setting done on e here...
+			e.set....
+			e.set....
+			e.set....
+			e.set....
+			return e;
+		}
+	}
+
+
+	Engine e1 = new Engine();
+	e1.set.. 	e1.set.. 	e1.set.. 	e1.set..
+
+	Engine e2 = MyCarFactory.getEngine();
+
+	e1.ignite();
+	e2.ignite();
+	
+
+
+
+
+
+<property name="hbm2ddl.auto">create</property>
+
+
+	if it is 
+
+		create - then every time during new run
+			 hibernate will destroy the table along with all data
+
+			 and a plain new empty table is created
+
+		update - then each time it will NOT drop the table
+			 if the table is already there, then it will use it
+			 as it is ....
+
+			 but in pojo if new fields are there, then it will
+		 	 alter the table ( AND U MIGHT NOT BE AWARE OF IT)
+
+
+
+		
+
+
+	FOR INSERTION  OF RECORD
+
+		U HAVE SEEN THE FUNCTION
+
+		session.save();
+
+	LETS TRY TO RUN SELECT QUERY
+
+
+		nickname of tablehere	nickname of each column here
+	select 	    |				|
+		department0_.DEPTNO as DEPTNO1_0_0_, 
+		department0_.LOC as LOC2_0_0_, 
+		department0_.DNAME as DNAME3_0_0_ 
+
+	from SYS_DEPT department0_  <--nickname of the table
+	
+		where department0_.DEPTNO=?
+
+	
+
+
+
+
+
+
+
+
